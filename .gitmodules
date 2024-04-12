@@ -1,3 +1,6 @@
 [submodule "src/src/ros_kortex"]
 	path = src/src/ros_kortex
 	url = https://github.com/Kinovarobotics/ros_kortex
+[submodule "ros_kortex"]
+	path = ros_kortex
+	url = https://github.com/Kinovarobotics/ros_kortex
