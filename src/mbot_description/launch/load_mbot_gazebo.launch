@@ -1,7 +1,11 @@
-<launch>
-    <!-- <group ns="mbot"> -->
+<launch>\
+    <arg name="x1" default="0.2"/>
+    <arg name="y1" default="0.2"/>
+    <arg name="z1" default="0"/>
+    <arg name="robot_name" default="mbot" />
+    <!-- <group ns="$(arg robot_name)"> -->
     <!-- Load the URDF into the ROS Parameter Server -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find mbot_description)/urdf/xacro/mbot.urdf.xacro'" />
+    <param name="$(arg robot_name)_description" command="$(find xacro)/xacro --inorder '$(find mbot_description)/urdf/xacro/mbot.urdf.xacro'" />
 
     <!-- Run Gazebo and load the robot world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -13,7 +17,31 @@
     </include>
 
     <!-- Spawn your robot in Gazebo -->
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-        args="-urdf -model mbot -param robot_description"/>
+    <node name="$(arg robot_name)_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -model $(arg robot_name) -param $(arg robot_name)_description -x $(arg x1) -y $(arg y1) -z $(arg z1) -robot_namespace $(arg robot_name)"/>
     <!-- </group> -->
 </launch>
+
+
+<!-- rosservice call /gazebo/set_model_state "model_state:
+  model_name: 'mbot'
+  pose:
+    position:
+      x: 0.2
+      y: 0.2
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  twist:
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  reference_frame: 'world'" -->
