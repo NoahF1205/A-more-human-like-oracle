@@ -9,13 +9,15 @@ class arm_sim:
         np.random.seed(seed)
         self.arm = kortex_arm.Arm()
 
-        rospy.init_node('arm_sim', anonymous=True)
+        rospy.init_node('arm_sim_controller', anonymous=True)
 
-    def get_state(self):
+    def get_joint_state(self):
         state = rospy.wait_for_message(
             f"{self.arm.robot_name}/joint_states", JointState)
         return np.array(state.position[:])
     
+    def get_cartisian_state(self):
+        return self.arm.get_eef_pose()
     
     def seed(self, seed):
         self.seed = seed
@@ -23,7 +25,6 @@ class arm_sim:
     
     def reset(self):
         self.arm.home_arm()
-        return self.get_state()
     
     def step(self, action):
         done = False
@@ -33,14 +34,17 @@ class arm_sim:
         while not is_arrived:
             self.arm.goto_cartesian_pose_sim(action, speed=1.)
             rospy.sleep(1.5)
-            real_pose = self.arm.get_eef_pose()
+            real_pose = self.get_cartisian_state()
             is_arrived =  True
             for i in range(6):
-                if abs(real_pose[i] - action[i]) > 1e-2:
+                difference = abs(real_pose[i] - action[i])
+                if difference - 2 * np.pi < 1e-2:
+                    continue
+                if difference > 1e-2:
                     is_arrived = False
                     break
             count += 1
-            if (count == 2):
+            if (count == 3):
                 print("Irlegal Pose!")
                 done = True
                 break
@@ -49,6 +53,6 @@ class arm_sim:
         else:
             self.arm.send_gripper_command(1)
             
-        state = self.arm.get_eef_pose()
+        state = self.get_cartisian_state()
         reward = 0
         return state, reward, done, None
