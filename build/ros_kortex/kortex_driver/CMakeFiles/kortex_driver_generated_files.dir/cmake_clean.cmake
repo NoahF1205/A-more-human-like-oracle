@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libkortex_driver_generated_files.pdb"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libkortex_driver_generated_files.so"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libkortex_driver_generated_files.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libkortex_driver_generated_files.so"
   "CMakeFiles/kortex_driver_generated_files.dir/src/generated/robot/actuatorconfig_proto_converter.cpp.o"
   "CMakeFiles/kortex_driver_generated_files.dir/src/generated/robot/actuatorconfig_ros_converter.cpp.o"
   "CMakeFiles/kortex_driver_generated_files.dir/src/generated/robot/actuatorconfig_services.cpp.o"

@@ -67,14 +67,14 @@ set(roboticsgroup_upatras_gazebo_plugins_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(roboticsgroup_upatras_gazebo_plugins_SOURCE_PREFIX /home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins)
-  set(roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX /home/noahfang/Documents/Lab/Human_modeling/devel)
+  set(roboticsgroup_upatras_gazebo_plugins_SOURCE_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins)
+  set(roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/devel)
   set(roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX "")
   set(roboticsgroup_upatras_gazebo_plugins_PREFIX ${roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX})
 else()
   set(roboticsgroup_upatras_gazebo_plugins_SOURCE_PREFIX "")
   set(roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX "")
-  set(roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX /home/noahfang/Documents/Lab/Human_modeling/install)
+  set(roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/install)
   set(roboticsgroup_upatras_gazebo_plugins_PREFIX ${roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/noahfang/Documents/Lab/Human_modeling/install/lib;/home/noahfang/Documents/Lab/Human_modeling/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/noahfang/Documents/Lab/A-more-human-like-oracle/install/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

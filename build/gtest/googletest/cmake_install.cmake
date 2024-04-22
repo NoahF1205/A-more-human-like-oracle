@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/Human_modeling/install")
+  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

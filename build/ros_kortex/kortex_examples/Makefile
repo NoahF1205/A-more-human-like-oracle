@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/noahfang/Documents/Lab/Human_modeling/src
+CMAKE_SOURCE_DIR = /home/noahfang/Documents/Lab/A-more-human-like-oracle/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/noahfang/Documents/Lab/Human_modeling/build
+CMAKE_BINARY_DIR = /home/noahfang/Documents/Lab/A-more-human-like-oracle/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/Human_modeling/build/CMakeFiles /home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_examples/CMakeFiles/progress.marks
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/Human_modeling/build/CMakeFiles 0
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/CMakeFiles /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_examples/CMakeFiles/progress.marks
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/clean
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/preinstall
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/preinstall
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/rule
 
 # Convenience name for target.
@@ -179,12 +179,12 @@ example_actuator_configuration_cpp: ros_kortex/kortex_examples/CMakeFiles/exampl
 
 # fast build rule for target.
 example_actuator_configuration_cpp/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build
 .PHONY : example_actuator_configuration_cpp/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/rule
 
 # Convenience name for target.
@@ -194,12 +194,12 @@ _run_tests_kortex_examples: ros_kortex/kortex_examples/CMakeFiles/_run_tests_kor
 
 # fast build rule for target.
 _run_tests_kortex_examples/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/build.make ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/build.make ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples.dir/build
 .PHONY : _run_tests_kortex_examples/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/rule
 
 # Convenience name for target.
@@ -209,12 +209,12 @@ example_vision_configuration_cpp: ros_kortex/kortex_examples/CMakeFiles/example_
 
 # fast build rule for target.
 example_vision_configuration_cpp/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build
 .PHONY : example_vision_configuration_cpp/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/rule
 
 # Convenience name for target.
@@ -224,12 +224,12 @@ example_full_arm_movement_cpp: ros_kortex/kortex_examples/CMakeFiles/example_ful
 
 # fast build rule for target.
 example_full_arm_movement_cpp/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build
 .PHONY : example_full_arm_movement_cpp/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule
 
 # Convenience name for target.
@@ -239,12 +239,12 @@ _run_tests_kortex_examples_gtest_kortex_examples_tests: ros_kortex/kortex_exampl
 
 # fast build rule for target.
 _run_tests_kortex_examples_gtest_kortex_examples_tests/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build
 .PHONY : _run_tests_kortex_examples_gtest_kortex_examples_tests/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/rule
 
 # Convenience name for target.
@@ -254,12 +254,12 @@ example_waypoint_action_client_cpp: ros_kortex/kortex_examples/CMakeFiles/exampl
 
 # fast build rule for target.
 example_waypoint_action_client_cpp/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build
 .PHONY : example_waypoint_action_client_cpp/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/rule
 
 # Convenience name for target.
@@ -269,12 +269,12 @@ run_tests_kortex_examples_gtest_kortex_examples_tests: ros_kortex/kortex_example
 
 # fast build rule for target.
 run_tests_kortex_examples_gtest_kortex_examples_tests/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest_kortex_examples_tests.dir/build
 .PHONY : run_tests_kortex_examples_gtest_kortex_examples_tests/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/rule
 
 # Convenience name for target.
@@ -284,12 +284,12 @@ clean_test_results_kortex_examples: ros_kortex/kortex_examples/CMakeFiles/clean_
 
 # fast build rule for target.
 clean_test_results_kortex_examples/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/build.make ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/build.make ros_kortex/kortex_examples/CMakeFiles/clean_test_results_kortex_examples.dir/build
 .PHONY : clean_test_results_kortex_examples/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/rule
 
 # Convenience name for target.
@@ -299,12 +299,12 @@ kortex_examples_tests: ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tes
 
 # fast build rule for target.
 kortex_examples_tests/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build
 .PHONY : kortex_examples_tests/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/rule
 
 # Convenience name for target.
@@ -314,12 +314,12 @@ run_tests_kortex_examples: ros_kortex/kortex_examples/CMakeFiles/run_tests_korte
 
 # fast build rule for target.
 run_tests_kortex_examples/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/build.make ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/build.make ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples.dir/build
 .PHONY : run_tests_kortex_examples/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/rule
 
 # Convenience name for target.
@@ -329,12 +329,12 @@ run_tests_kortex_examples_gtest: ros_kortex/kortex_examples/CMakeFiles/run_tests
 
 # fast build rule for target.
 run_tests_kortex_examples_gtest/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/build.make ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/build.make ros_kortex/kortex_examples/CMakeFiles/run_tests_kortex_examples_gtest.dir/build
 .PHONY : run_tests_kortex_examples_gtest/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/rule
 
 # Convenience name for target.
@@ -344,12 +344,12 @@ example_cartesian_poses_with_notifications_cpp: ros_kortex/kortex_examples/CMake
 
 # fast build rule for target.
 example_cartesian_poses_with_notifications_cpp/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build
 .PHONY : example_cartesian_poses_with_notifications_cpp/fast
 
 # Convenience name for target.
 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/rule:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/rule
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f CMakeFiles/Makefile2 ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/rule
 .PHONY : ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/rule
 
 # Convenience name for target.
@@ -359,7 +359,7 @@ _run_tests_kortex_examples_gtest: ros_kortex/kortex_examples/CMakeFiles/_run_tes
 
 # fast build rule for target.
 _run_tests_kortex_examples_gtest/fast:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/build.make ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/build
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/build.make ros_kortex/kortex_examples/CMakeFiles/_run_tests_kortex_examples_gtest.dir/build
 .PHONY : _run_tests_kortex_examples_gtest/fast
 
 src/actuator_config/example_actuator_configuration.o: src/actuator_config/example_actuator_configuration.cpp.o
@@ -368,7 +368,7 @@ src/actuator_config/example_actuator_configuration.o: src/actuator_config/exampl
 
 # target to build an object file
 src/actuator_config/example_actuator_configuration.cpp.o:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/src/actuator_config/example_actuator_configuration.cpp.o
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/src/actuator_config/example_actuator_configuration.cpp.o
 .PHONY : src/actuator_config/example_actuator_configuration.cpp.o
 
 src/actuator_config/example_actuator_configuration.i: src/actuator_config/example_actuator_configuration.cpp.i
@@ -377,7 +377,7 @@ src/actuator_config/example_actuator_configuration.i: src/actuator_config/exampl
 
 # target to preprocess a source file
 src/actuator_config/example_actuator_configuration.cpp.i:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/src/actuator_config/example_actuator_configuration.cpp.i
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/src/actuator_config/example_actuator_configuration.cpp.i
 .PHONY : src/actuator_config/example_actuator_configuration.cpp.i
 
 src/actuator_config/example_actuator_configuration.s: src/actuator_config/example_actuator_configuration.cpp.s
@@ -386,7 +386,7 @@ src/actuator_config/example_actuator_configuration.s: src/actuator_config/exampl
 
 # target to generate assembly for a file
 src/actuator_config/example_actuator_configuration.cpp.s:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/src/actuator_config/example_actuator_configuration.cpp.s
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_actuator_configuration_cpp.dir/src/actuator_config/example_actuator_configuration.cpp.s
 .PHONY : src/actuator_config/example_actuator_configuration.cpp.s
 
 src/full_arm/example_cartesian_poses_with_notifications.o: src/full_arm/example_cartesian_poses_with_notifications.cpp.o
@@ -395,7 +395,7 @@ src/full_arm/example_cartesian_poses_with_notifications.o: src/full_arm/example_
 
 # target to build an object file
 src/full_arm/example_cartesian_poses_with_notifications.cpp.o:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/src/full_arm/example_cartesian_poses_with_notifications.cpp.o
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/src/full_arm/example_cartesian_poses_with_notifications.cpp.o
 .PHONY : src/full_arm/example_cartesian_poses_with_notifications.cpp.o
 
 src/full_arm/example_cartesian_poses_with_notifications.i: src/full_arm/example_cartesian_poses_with_notifications.cpp.i
@@ -404,7 +404,7 @@ src/full_arm/example_cartesian_poses_with_notifications.i: src/full_arm/example_
 
 # target to preprocess a source file
 src/full_arm/example_cartesian_poses_with_notifications.cpp.i:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/src/full_arm/example_cartesian_poses_with_notifications.cpp.i
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/src/full_arm/example_cartesian_poses_with_notifications.cpp.i
 .PHONY : src/full_arm/example_cartesian_poses_with_notifications.cpp.i
 
 src/full_arm/example_cartesian_poses_with_notifications.s: src/full_arm/example_cartesian_poses_with_notifications.cpp.s
@@ -413,7 +413,7 @@ src/full_arm/example_cartesian_poses_with_notifications.s: src/full_arm/example_
 
 # target to generate assembly for a file
 src/full_arm/example_cartesian_poses_with_notifications.cpp.s:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/src/full_arm/example_cartesian_poses_with_notifications.cpp.s
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/src/full_arm/example_cartesian_poses_with_notifications.cpp.s
 .PHONY : src/full_arm/example_cartesian_poses_with_notifications.cpp.s
 
 src/full_arm/example_full_arm_movement.o: src/full_arm/example_full_arm_movement.cpp.o
@@ -422,7 +422,7 @@ src/full_arm/example_full_arm_movement.o: src/full_arm/example_full_arm_movement
 
 # target to build an object file
 src/full_arm/example_full_arm_movement.cpp.o:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/src/full_arm/example_full_arm_movement.cpp.o
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/src/full_arm/example_full_arm_movement.cpp.o
 .PHONY : src/full_arm/example_full_arm_movement.cpp.o
 
 src/full_arm/example_full_arm_movement.i: src/full_arm/example_full_arm_movement.cpp.i
@@ -431,7 +431,7 @@ src/full_arm/example_full_arm_movement.i: src/full_arm/example_full_arm_movement
 
 # target to preprocess a source file
 src/full_arm/example_full_arm_movement.cpp.i:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/src/full_arm/example_full_arm_movement.cpp.i
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/src/full_arm/example_full_arm_movement.cpp.i
 .PHONY : src/full_arm/example_full_arm_movement.cpp.i
 
 src/full_arm/example_full_arm_movement.s: src/full_arm/example_full_arm_movement.cpp.s
@@ -440,7 +440,7 @@ src/full_arm/example_full_arm_movement.s: src/full_arm/example_full_arm_movement
 
 # target to generate assembly for a file
 src/full_arm/example_full_arm_movement.cpp.s:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/src/full_arm/example_full_arm_movement.cpp.s
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_full_arm_movement_cpp.dir/src/full_arm/example_full_arm_movement.cpp.s
 .PHONY : src/full_arm/example_full_arm_movement.cpp.s
 
 src/full_arm/example_waypoint_action_client.o: src/full_arm/example_waypoint_action_client.cpp.o
@@ -449,7 +449,7 @@ src/full_arm/example_waypoint_action_client.o: src/full_arm/example_waypoint_act
 
 # target to build an object file
 src/full_arm/example_waypoint_action_client.cpp.o:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/src/full_arm/example_waypoint_action_client.cpp.o
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/src/full_arm/example_waypoint_action_client.cpp.o
 .PHONY : src/full_arm/example_waypoint_action_client.cpp.o
 
 src/full_arm/example_waypoint_action_client.i: src/full_arm/example_waypoint_action_client.cpp.i
@@ -458,7 +458,7 @@ src/full_arm/example_waypoint_action_client.i: src/full_arm/example_waypoint_act
 
 # target to preprocess a source file
 src/full_arm/example_waypoint_action_client.cpp.i:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/src/full_arm/example_waypoint_action_client.cpp.i
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/src/full_arm/example_waypoint_action_client.cpp.i
 .PHONY : src/full_arm/example_waypoint_action_client.cpp.i
 
 src/full_arm/example_waypoint_action_client.s: src/full_arm/example_waypoint_action_client.cpp.s
@@ -467,7 +467,7 @@ src/full_arm/example_waypoint_action_client.s: src/full_arm/example_waypoint_act
 
 # target to generate assembly for a file
 src/full_arm/example_waypoint_action_client.cpp.s:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/src/full_arm/example_waypoint_action_client.cpp.s
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_waypoint_action_client_cpp.dir/src/full_arm/example_waypoint_action_client.cpp.s
 .PHONY : src/full_arm/example_waypoint_action_client.cpp.s
 
 src/tests/kortex_examples_tests.o: src/tests/kortex_examples_tests.cc.o
@@ -476,7 +476,7 @@ src/tests/kortex_examples_tests.o: src/tests/kortex_examples_tests.cc.o
 
 # target to build an object file
 src/tests/kortex_examples_tests.cc.o:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/src/tests/kortex_examples_tests.cc.o
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/src/tests/kortex_examples_tests.cc.o
 .PHONY : src/tests/kortex_examples_tests.cc.o
 
 src/tests/kortex_examples_tests.i: src/tests/kortex_examples_tests.cc.i
@@ -485,7 +485,7 @@ src/tests/kortex_examples_tests.i: src/tests/kortex_examples_tests.cc.i
 
 # target to preprocess a source file
 src/tests/kortex_examples_tests.cc.i:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/src/tests/kortex_examples_tests.cc.i
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/src/tests/kortex_examples_tests.cc.i
 .PHONY : src/tests/kortex_examples_tests.cc.i
 
 src/tests/kortex_examples_tests.s: src/tests/kortex_examples_tests.cc.s
@@ -494,7 +494,7 @@ src/tests/kortex_examples_tests.s: src/tests/kortex_examples_tests.cc.s
 
 # target to generate assembly for a file
 src/tests/kortex_examples_tests.cc.s:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/src/tests/kortex_examples_tests.cc.s
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/build.make ros_kortex/kortex_examples/CMakeFiles/kortex_examples_tests.dir/src/tests/kortex_examples_tests.cc.s
 .PHONY : src/tests/kortex_examples_tests.cc.s
 
 src/vision_config/example_vision_configuration.o: src/vision_config/example_vision_configuration.cpp.o
@@ -503,7 +503,7 @@ src/vision_config/example_vision_configuration.o: src/vision_config/example_visi
 
 # target to build an object file
 src/vision_config/example_vision_configuration.cpp.o:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/src/vision_config/example_vision_configuration.cpp.o
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/src/vision_config/example_vision_configuration.cpp.o
 .PHONY : src/vision_config/example_vision_configuration.cpp.o
 
 src/vision_config/example_vision_configuration.i: src/vision_config/example_vision_configuration.cpp.i
@@ -512,7 +512,7 @@ src/vision_config/example_vision_configuration.i: src/vision_config/example_visi
 
 # target to preprocess a source file
 src/vision_config/example_vision_configuration.cpp.i:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/src/vision_config/example_vision_configuration.cpp.i
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/src/vision_config/example_vision_configuration.cpp.i
 .PHONY : src/vision_config/example_vision_configuration.cpp.i
 
 src/vision_config/example_vision_configuration.s: src/vision_config/example_vision_configuration.cpp.s
@@ -521,7 +521,7 @@ src/vision_config/example_vision_configuration.s: src/vision_config/example_visi
 
 # target to generate assembly for a file
 src/vision_config/example_vision_configuration.cpp.s:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/src/vision_config/example_vision_configuration.cpp.s
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(MAKE) -f ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/build.make ros_kortex/kortex_examples/CMakeFiles/example_vision_configuration_cpp.dir/src/vision_config/example_vision_configuration.cpp.s
 .PHONY : src/vision_config/example_vision_configuration.cpp.s
 
 # Help Target
@@ -579,6 +579,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_driver/kortex_arm_driver_func_tests"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_driver/kortex_arm_driver_func_tests.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_driver/kortex_arm_driver_func_tests"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_driver/kortex_arm_driver_func_tests.pdb"
   "CMakeFiles/kortex_arm_driver_func_tests.dir/src/non-generated/tests/kortex_arm_driver_func_tests.cc.o"
   "CMakeFiles/kortex_arm_driver_func_tests.dir/src/non-generated/tests/kortex_simulator_unit_tests.cc.o"
   "CMakeFiles/kortex_arm_driver_func_tests.dir/src/non-generated/tests/main.cc.o"

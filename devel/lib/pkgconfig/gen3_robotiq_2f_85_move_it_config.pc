@@ -1,4 +1,4 @@
-prefix=/home/noahfang/Documents/Lab/Human_modeling/devel
+prefix=/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel
 
 Name: gen3_robotiq_2f_85_move_it_config
 Description: Description of gen3_robotiq_2f_85_move_it_config

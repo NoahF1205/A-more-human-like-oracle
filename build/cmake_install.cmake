@@ -1,8 +1,8 @@
-# Install script for directory: /home/noahfang/Documents/Lab/Human_modeling/src
+# Install script for directory: /home/noahfang/Documents/Lab/A-more-human-like-oracle/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/Human_modeling/install")
+  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,105 +49,103 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/noahfang/Documents/Lab/Human_modeling/install/_setup_util.py")
+   "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/Human_modeling/install" TYPE PROGRAM FILES "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install" TYPE PROGRAM FILES "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/noahfang/Documents/Lab/Human_modeling/install/env.sh")
+   "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/Human_modeling/install" TYPE PROGRAM FILES "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install" TYPE PROGRAM FILES "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/env.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/noahfang/Documents/Lab/Human_modeling/install/setup.bash;/home/noahfang/Documents/Lab/Human_modeling/install/local_setup.bash")
+   "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/setup.bash;/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/Human_modeling/install" TYPE FILE FILES
-    "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/setup.bash"
-    "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/local_setup.bash"
+file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install" TYPE FILE FILES
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/setup.bash"
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/noahfang/Documents/Lab/Human_modeling/install/setup.sh;/home/noahfang/Documents/Lab/Human_modeling/install/local_setup.sh")
+   "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/setup.sh;/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/Human_modeling/install" TYPE FILE FILES
-    "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/setup.sh"
-    "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/local_setup.sh"
+file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install" TYPE FILE FILES
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/setup.sh"
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/noahfang/Documents/Lab/Human_modeling/install/setup.zsh;/home/noahfang/Documents/Lab/Human_modeling/install/local_setup.zsh")
+   "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/setup.zsh;/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/Human_modeling/install" TYPE FILE FILES
-    "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/setup.zsh"
-    "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/local_setup.zsh"
+file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install" TYPE FILE FILES
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/setup.zsh"
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/noahfang/Documents/Lab/Human_modeling/install/.rosinstall")
+   "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/Human_modeling/install" TYPE FILE FILES "/home/noahfang/Documents/Lab/Human_modeling/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install" TYPE FILE FILES "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/gtest/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_move_it_config/kortex_move_it_config/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/racecar_control/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/racecar_description/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_control/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_description/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_gazebo/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/third_party/gazebo-pkgs/gazebo_version_helpers/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/third_party/gazebo-pkgs/gazebo_grasp_plugin/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/racecar_gazebo/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_driver/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_move_it_config/gen3_lite_gen3_lite_2f_move_it_config/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_move_it_config/gen3_move_it_config/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_move_it_config/gen3_robotiq_2f_140_move_it_config/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_move_it_config/gen3_robotiq_2f_85_move_it_config/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_examples/cmake_install.cmake")
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/mbot_description/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/gtest/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_move_it_config/kortex_move_it_config/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_control/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_description/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_gazebo/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/third_party/gazebo-pkgs/gazebo_version_helpers/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/third_party/gazebo-pkgs/gazebo_grasp_plugin/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/mbot_catching/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_driver/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_move_it_config/gen3_lite_gen3_lite_2f_move_it_config/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_move_it_config/gen3_move_it_config/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_move_it_config/gen3_robotiq_2f_140_move_it_config/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_move_it_config/gen3_robotiq_2f_85_move_it_config/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_examples/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/mbot_description/cmake_install.cmake")
 
 endif()
 
@@ -159,5 +157,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/noahfang/Documents/Lab/Human_modeling/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

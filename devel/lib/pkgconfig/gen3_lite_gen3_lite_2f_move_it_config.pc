@@ -1,4 +1,4 @@
-prefix=/home/noahfang/Documents/Lab/Human_modeling/devel
+prefix=/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel
 
 Name: gen3_lite_gen3_lite_2f_move_it_config
 Description: Description of gen3_lite_gen3_lite_2f_move_it_config

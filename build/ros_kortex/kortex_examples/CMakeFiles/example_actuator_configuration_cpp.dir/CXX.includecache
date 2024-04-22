@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ActuatorConfig_ClearFaults.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ActuatorConfig_ClearFaults.h
 ros/service_traits.h
 -
 kortex_driver/ActuatorConfig_ClearFaultsRequest.h
@@ -14,7 +14,7 @@ kortex_driver/ActuatorConfig_ClearFaultsRequest.h
 kortex_driver/ActuatorConfig_ClearFaultsResponse.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ActuatorConfig_ClearFaultsRequest.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ActuatorConfig_ClearFaultsRequest.h
 string
 -
 vector
@@ -32,7 +32,7 @@ ros/message_operations.h
 kortex_driver/Empty.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ActuatorConfig_ClearFaultsResponse.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ActuatorConfig_ClearFaultsResponse.h
 string
 -
 vector
@@ -50,7 +50,7 @@ ros/message_operations.h
 kortex_driver/Empty.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ControlLoopParameters.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ControlLoopParameters.h
 string
 -
 vector
@@ -66,7 +66,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ControlLoopSelection.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ControlLoopSelection.h
 string
 -
 vector
@@ -82,7 +82,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/DeviceHandle.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/DeviceHandle.h
 string
 -
 vector
@@ -98,7 +98,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/DeviceHandles.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/DeviceHandles.h
 string
 -
 vector
@@ -116,7 +116,7 @@ ros/message_operations.h
 kortex_driver/DeviceHandle.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/DeviceTypes.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/DeviceTypes.h
 string
 -
 vector
@@ -132,7 +132,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/Empty.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/Empty.h
 string
 -
 vector
@@ -148,7 +148,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/GetControlLoopParameters.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/GetControlLoopParameters.h
 ros/service_traits.h
 -
 kortex_driver/GetControlLoopParametersRequest.h
@@ -156,7 +156,7 @@ kortex_driver/GetControlLoopParametersRequest.h
 kortex_driver/GetControlLoopParametersResponse.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/GetControlLoopParametersRequest.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/GetControlLoopParametersRequest.h
 string
 -
 vector
@@ -174,7 +174,7 @@ ros/message_operations.h
 kortex_driver/LoopSelection.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/GetControlLoopParametersResponse.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/GetControlLoopParametersResponse.h
 string
 -
 vector
@@ -192,7 +192,7 @@ ros/message_operations.h
 kortex_driver/ControlLoopParameters.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/LoopSelection.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/LoopSelection.h
 string
 -
 vector
@@ -208,7 +208,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ReadAllDevices.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ReadAllDevices.h
 ros/service_traits.h
 -
 kortex_driver/ReadAllDevicesRequest.h
@@ -216,7 +216,7 @@ kortex_driver/ReadAllDevicesRequest.h
 kortex_driver/ReadAllDevicesResponse.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ReadAllDevicesRequest.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ReadAllDevicesRequest.h
 string
 -
 vector
@@ -234,7 +234,7 @@ ros/message_operations.h
 kortex_driver/Empty.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/ReadAllDevicesResponse.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/ReadAllDevicesResponse.h
 string
 -
 vector
@@ -252,7 +252,7 @@ ros/message_operations.h
 kortex_driver/DeviceHandles.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/SetControlLoopParameters.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/SetControlLoopParameters.h
 ros/service_traits.h
 -
 kortex_driver/SetControlLoopParametersRequest.h
@@ -260,7 +260,7 @@ kortex_driver/SetControlLoopParametersRequest.h
 kortex_driver/SetControlLoopParametersResponse.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/SetControlLoopParametersRequest.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/SetControlLoopParametersRequest.h
 string
 -
 vector
@@ -278,7 +278,7 @@ ros/message_operations.h
 kortex_driver/ControlLoopParameters.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/SetControlLoopParametersResponse.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/SetControlLoopParametersResponse.h
 string
 -
 vector
@@ -296,7 +296,7 @@ ros/message_operations.h
 kortex_driver/Empty.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/SetDeviceID.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/SetDeviceID.h
 ros/service_traits.h
 -
 kortex_driver/SetDeviceIDRequest.h
@@ -304,7 +304,7 @@ kortex_driver/SetDeviceIDRequest.h
 kortex_driver/SetDeviceIDResponse.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/SetDeviceIDRequest.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/SetDeviceIDRequest.h
 string
 -
 vector
@@ -320,7 +320,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/devel/include/kortex_driver/SetDeviceIDResponse.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include/kortex_driver/SetDeviceIDResponse.h
 string
 -
 vector
@@ -336,9 +336,9 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_examples/src/actuator_config/example_actuator_configuration.cpp
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_examples/src/actuator_config/example_actuator_configuration.cpp
 ros/ros.h
-/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_examples/src/actuator_config/ros/ros.h
+/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_examples/src/actuator_config/ros/ros.h
 std_msgs/Empty.h
 -
 iostream

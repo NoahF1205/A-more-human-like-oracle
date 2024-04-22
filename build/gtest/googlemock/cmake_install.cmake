@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/Human_modeling/install")
+  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/noahfang/Documents/Lab/Human_modeling/build/gtest/googletest/cmake_install.cmake")
+  include("/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/gtest/googletest/cmake_install.cmake")
 
 endif()
 

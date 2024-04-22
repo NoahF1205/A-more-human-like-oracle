@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/kortex_examples_tests"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/kortex_examples_tests.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/kortex_examples_tests"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/kortex_examples_tests.pdb"
   "CMakeFiles/kortex_examples_tests.dir/src/tests/kortex_examples_tests.cc.o"
 )
 

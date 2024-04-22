@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/noahfang/Documents/Lab/Human_modeling/src
+CMAKE_SOURCE_DIR = /home/noahfang/Documents/Lab/A-more-human-like-oracle/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/noahfang/Documents/Lab/Human_modeling/build
+CMAKE_BINARY_DIR = /home/noahfang/Documents/Lab/A-more-human-like-oracle/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/Human_modeling/build/CMakeFiles /home/noahfang/Documents/Lab/Human_modeling/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/CMakeFiles /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/Human_modeling/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1193,6 +1193,71 @@ gazebo_grasp_fix: cmake_check_build_system
 gazebo_grasp_fix/fast:
 	$(MAKE) -f ros_kortex/third_party/gazebo-pkgs/gazebo_grasp_plugin/CMakeFiles/gazebo_grasp_fix.dir/build.make ros_kortex/third_party/gazebo-pkgs/gazebo_grasp_plugin/CMakeFiles/gazebo_grasp_fix.dir/build
 .PHONY : gazebo_grasp_fix/fast
+
+#=============================================================================
+# Target rules for targets named sound_play_generate_messages_py
+
+# Build rule for target.
+sound_play_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sound_play_generate_messages_py
+.PHONY : sound_play_generate_messages_py
+
+# fast build rule for target.
+sound_play_generate_messages_py/fast:
+	$(MAKE) -f mbot_catching/CMakeFiles/sound_play_generate_messages_py.dir/build.make mbot_catching/CMakeFiles/sound_play_generate_messages_py.dir/build
+.PHONY : sound_play_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named sound_play_generate_messages_nodejs
+
+# Build rule for target.
+sound_play_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sound_play_generate_messages_nodejs
+.PHONY : sound_play_generate_messages_nodejs
+
+# fast build rule for target.
+sound_play_generate_messages_nodejs/fast:
+	$(MAKE) -f mbot_catching/CMakeFiles/sound_play_generate_messages_nodejs.dir/build.make mbot_catching/CMakeFiles/sound_play_generate_messages_nodejs.dir/build
+.PHONY : sound_play_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named sound_play_generate_messages_lisp
+
+# Build rule for target.
+sound_play_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sound_play_generate_messages_lisp
+.PHONY : sound_play_generate_messages_lisp
+
+# fast build rule for target.
+sound_play_generate_messages_lisp/fast:
+	$(MAKE) -f mbot_catching/CMakeFiles/sound_play_generate_messages_lisp.dir/build.make mbot_catching/CMakeFiles/sound_play_generate_messages_lisp.dir/build
+.PHONY : sound_play_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named sound_play_generate_messages_eus
+
+# Build rule for target.
+sound_play_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sound_play_generate_messages_eus
+.PHONY : sound_play_generate_messages_eus
+
+# fast build rule for target.
+sound_play_generate_messages_eus/fast:
+	$(MAKE) -f mbot_catching/CMakeFiles/sound_play_generate_messages_eus.dir/build.make mbot_catching/CMakeFiles/sound_play_generate_messages_eus.dir/build
+.PHONY : sound_play_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named sound_play_generate_messages_cpp
+
+# Build rule for target.
+sound_play_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sound_play_generate_messages_cpp
+.PHONY : sound_play_generate_messages_cpp
+
+# fast build rule for target.
+sound_play_generate_messages_cpp/fast:
+	$(MAKE) -f mbot_catching/CMakeFiles/sound_play_generate_messages_cpp.dir/build.make mbot_catching/CMakeFiles/sound_play_generate_messages_cpp.dir/build
+.PHONY : sound_play_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named control_toolbox_gencfg
@@ -11426,6 +11491,11 @@ help:
 	@echo "... dynamic_reconfigure_generate_messages_eus"
 	@echo "... gazebo_msgs_generate_messages_eus"
 	@echo "... gazebo_grasp_fix"
+	@echo "... sound_play_generate_messages_py"
+	@echo "... sound_play_generate_messages_nodejs"
+	@echo "... sound_play_generate_messages_lisp"
+	@echo "... sound_play_generate_messages_eus"
+	@echo "... sound_play_generate_messages_cpp"
 	@echo "... control_toolbox_gencfg"
 	@echo "... control_msgs_generate_messages_eus"
 	@echo "... control_toolbox_generate_messages_cpp"

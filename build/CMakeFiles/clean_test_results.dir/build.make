@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/noahfang/Documents/Lab/Human_modeling/src
+CMAKE_SOURCE_DIR = /home/noahfang/Documents/Lab/A-more-human-like-oracle/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/noahfang/Documents/Lab/Human_modeling/build
+CMAKE_BINARY_DIR = /home/noahfang/Documents/Lab/A-more-human-like-oracle/build
 
 # Utility rule file for clean_test_results.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/noahfang/Documents/Lab/Human_modeling/build
 include CMakeFiles/clean_test_results.dir/progress.make
 
 CMakeFiles/clean_test_results:
-	/usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/noahfang/Documents/Lab/Human_modeling/build/test_results
+	/usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/test_results
 
 clean_test_results: CMakeFiles/clean_test_results
 clean_test_results: CMakeFiles/clean_test_results.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/clean_test_results.dir/clean:
 .PHONY : CMakeFiles/clean_test_results.dir/clean
 
 CMakeFiles/clean_test_results.dir/depend:
-	cd /home/noahfang/Documents/Lab/Human_modeling/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/noahfang/Documents/Lab/Human_modeling/src /home/noahfang/Documents/Lab/Human_modeling/src /home/noahfang/Documents/Lab/Human_modeling/build /home/noahfang/Documents/Lab/Human_modeling/build /home/noahfang/Documents/Lab/Human_modeling/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/noahfang/Documents/Lab/A-more-human-like-oracle/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/noahfang/Documents/Lab/A-more-human-like-oracle/src /home/noahfang/Documents/Lab/A-more-human-like-oracle/src /home/noahfang/Documents/Lab/A-more-human-like-oracle/build /home/noahfang/Documents/Lab/A-more-human-like-oracle/build /home/noahfang/Documents/Lab/A-more-human-like-oracle/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean_test_results.dir/depend
 

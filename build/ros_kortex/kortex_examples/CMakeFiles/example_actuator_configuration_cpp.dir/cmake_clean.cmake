@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_actuator_configuration_cpp"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_actuator_configuration_cpp.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_actuator_configuration_cpp"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_actuator_configuration_cpp.pdb"
   "CMakeFiles/example_actuator_configuration_cpp.dir/src/actuator_config/example_actuator_configuration.cpp.o"
 )
 

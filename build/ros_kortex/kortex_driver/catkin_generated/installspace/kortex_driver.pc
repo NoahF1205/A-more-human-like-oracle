@@ -1,4 +1,4 @@
-prefix=/home/noahfang/Documents/Lab/Human_modeling/install
+prefix=/home/noahfang/Documents/Lab/A-more-human-like-oracle/install
 
 Name: kortex_driver
 Description: Description of kortex_driver

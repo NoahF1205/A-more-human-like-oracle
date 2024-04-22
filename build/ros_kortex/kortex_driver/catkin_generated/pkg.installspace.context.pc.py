@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "${prefix}/include".split(';') if "${prefix}/i
 PROJECT_CATKIN_DEPENDS = "actionlib_msgs".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "kortex_driver"
-PROJECT_SPACE_DIR = "/home/noahfang/Documents/Lab/Human_modeling/install"
+PROJECT_SPACE_DIR = "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install"
 PROJECT_VERSION = "2.2.2"

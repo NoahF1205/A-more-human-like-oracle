@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_waypoint_action_client_cpp"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_waypoint_action_client_cpp.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_waypoint_action_client_cpp"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_waypoint_action_client_cpp.pdb"
   "CMakeFiles/example_waypoint_action_client_cpp.dir/src/full_arm/example_waypoint_action_client.cpp.o"
 )
 

@@ -67,14 +67,14 @@ set(kortex_driver_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(kortex_driver_SOURCE_PREFIX /home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_driver)
-  set(kortex_driver_DEVEL_PREFIX /home/noahfang/Documents/Lab/Human_modeling/devel)
+  set(kortex_driver_SOURCE_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_driver)
+  set(kortex_driver_DEVEL_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/devel)
   set(kortex_driver_INSTALL_PREFIX "")
   set(kortex_driver_PREFIX ${kortex_driver_DEVEL_PREFIX})
 else()
   set(kortex_driver_SOURCE_PREFIX "")
   set(kortex_driver_DEVEL_PREFIX "")
-  set(kortex_driver_INSTALL_PREFIX /home/noahfang/Documents/Lab/Human_modeling/install)
+  set(kortex_driver_INSTALL_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/install)
   set(kortex_driver_PREFIX ${kortex_driver_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(kortex_driver_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/noahfang/Documents/Lab/Human_modeling/devel/include " STREQUAL " ")
+if(NOT "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include " STREQUAL " ")
   set(kortex_driver_INCLUDE_DIRS "")
-  set(_include_dirs "/home/noahfang/Documents/Lab/Human_modeling/devel/include")
+  set(_include_dirs "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/noahfang/Documents/Lab/Human_modeling/devel/include " STREQUAL " "
         message(FATAL_ERROR "Project 'kortex_driver' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'kortex_driver' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_driver/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'kortex_driver' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_driver/${idir}'.  ${_report}")
     endif()
     _list_append_unique(kortex_driver_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/noahfang/Documents/Lab/Human_modeling/devel/lib;/home/noahfang/Documents/Lab/Human_modeling/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libroboticsgroup_upatras_gazebo_mimic_joint_plugin.pdb"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libroboticsgroup_upatras_gazebo_mimic_joint_plugin.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so"
   "CMakeFiles/roboticsgroup_upatras_gazebo_mimic_joint_plugin.dir/src/mimic_joint_plugin.cpp.o"
 )
 

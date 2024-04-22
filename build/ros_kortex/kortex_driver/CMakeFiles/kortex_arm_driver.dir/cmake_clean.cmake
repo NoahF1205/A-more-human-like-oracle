@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_driver/kortex_arm_driver"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_driver/kortex_arm_driver.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_driver/kortex_arm_driver"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_driver/kortex_arm_driver.pdb"
   "CMakeFiles/kortex_arm_driver.dir/src/non-generated/main.cpp.o"
 )
 

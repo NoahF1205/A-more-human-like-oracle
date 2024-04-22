@@ -1,8 +1,8 @@
-# Install script for directory: /home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_control
+# Install script for directory: /home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_control
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/Human_modeling/install")
+  set(CMAKE_INSTALL_PREFIX "/home/noahfang/Documents/Lab/A-more-human-like-oracle/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,25 +38,25 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_control/catkin_generated/installspace/kortex_control.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_control/catkin_generated/installspace/kortex_control.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kortex_control/cmake" TYPE FILE FILES
-    "/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_control/catkin_generated/installspace/kortex_controlConfig.cmake"
-    "/home/noahfang/Documents/Lab/Human_modeling/build/ros_kortex/kortex_control/catkin_generated/installspace/kortex_controlConfig-version.cmake"
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_control/catkin_generated/installspace/kortex_controlConfig.cmake"
+    "/home/noahfang/Documents/Lab/A-more-human-like-oracle/build/ros_kortex/kortex_control/catkin_generated/installspace/kortex_controlConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kortex_control" TYPE FILE FILES "/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kortex_control" TYPE FILE FILES "/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_control/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kortex_control/arms" TYPE DIRECTORY FILES "/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_control/arms/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kortex_control/arms" TYPE DIRECTORY FILES "/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_control/arms/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kortex_control/grippers" TYPE DIRECTORY FILES "/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/kortex_control/grippers/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kortex_control/grippers" TYPE DIRECTORY FILES "/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/kortex_control/grippers/")
 endif()
 

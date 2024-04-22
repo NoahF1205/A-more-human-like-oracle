@@ -1,4 +1,4 @@
-prefix=/home/noahfang/Documents/Lab/Human_modeling/devel
+prefix=/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel
 
 Name: mbot_description
 Description: Description of mbot_description

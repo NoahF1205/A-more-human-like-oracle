@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_cartesian_poses_with_notifications_cpp"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_cartesian_poses_with_notifications_cpp.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_cartesian_poses_with_notifications_cpp"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_cartesian_poses_with_notifications_cpp.pdb"
   "CMakeFiles/example_cartesian_poses_with_notifications_cpp.dir/src/full_arm/example_cartesian_poses_with_notifications.cpp.o"
 )
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libkortex_arm_driver_implementation.pdb"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libkortex_arm_driver_implementation.so"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libkortex_arm_driver_implementation.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libkortex_arm_driver_implementation.so"
   "CMakeFiles/kortex_arm_driver_implementation.dir/src/non-generated/driver/cartesian_trajectory_action_server.cpp.o"
   "CMakeFiles/kortex_arm_driver_implementation.dir/src/non-generated/driver/joint_trajectory_action_server.cpp.o"
   "CMakeFiles/kortex_arm_driver_implementation.dir/src/non-generated/driver/kortex_arm_driver.cpp.o"

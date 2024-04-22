@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_full_arm_movement_cpp"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_full_arm_movement_cpp.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_full_arm_movement_cpp"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_full_arm_movement_cpp.pdb"
   "CMakeFiles/example_full_arm_movement_cpp.dir/src/full_arm/example_full_arm_movement.cpp.o"
 )
 

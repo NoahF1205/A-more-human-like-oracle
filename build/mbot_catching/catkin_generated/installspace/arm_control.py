@@ -1,0 +1,58 @@
+from armpy import kortex_arm
+from sensor_msgs.msg import JointState
+import numpy as np
+import rospy
+
+class arm_sim:
+    def __init__(self, seed=0):
+        self.seed = seed
+        np.random.seed(seed)
+        self.arm = kortex_arm.Arm()
+
+        rospy.init_node('arm_sim_controller', anonymous=True)
+
+    def get_joint_state(self):
+        state = rospy.wait_for_message(
+            f"{self.arm.robot_name}/joint_states", JointState)
+        return np.array(state.position[:])
+    
+    def get_cartisian_state(self):
+        return self.arm.get_eef_pose()
+    
+    def seed(self, seed):
+        self.seed = seed
+        np.random.seed(seed)
+    
+    def reset(self):
+        self.arm.home_arm()
+    
+    def step(self, action):
+        done = False
+        is_arrived =  False
+        count = 0
+        # 这里一定要sleep等模拟器中动画播放完，不然action会执行到一半就结束
+        while not is_arrived:
+            self.arm.goto_cartesian_pose_sim(action, speed=1.)
+            rospy.sleep(1.5)
+            real_pose = self.get_cartisian_state()
+            is_arrived =  True
+            for i in range(6):
+                difference = abs(real_pose[i] - action[i])
+                if difference - 2 * np.pi < 1e-2:
+                    continue
+                if difference > 1e-2:
+                    is_arrived = False
+                    break
+            count += 1
+            if (count == 3):
+                print("Irlegal Pose!")
+                done = True
+                break
+        if action[-1] - 0.5 < 0.001:
+            self.arm.send_gripper_command(0)
+        else:
+            self.arm.send_gripper_command(1)
+            
+        state = self.get_cartisian_state()
+        reward = 0
+        return state, reward, done, None

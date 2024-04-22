@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libgazebo_version_helpers.pdb"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/libgazebo_version_helpers.so"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libgazebo_version_helpers.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/libgazebo_version_helpers.so"
   "CMakeFiles/gazebo_version_helpers.dir/src/GazeboVersionHelpers.cpp.o"
 )
 

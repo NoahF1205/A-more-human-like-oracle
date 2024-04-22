@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_vision_configuration_cpp"
-  "/home/noahfang/Documents/Lab/Human_modeling/devel/lib/kortex_examples/example_vision_configuration_cpp.pdb"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_vision_configuration_cpp"
+  "/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib/kortex_examples/example_vision_configuration_cpp.pdb"
   "CMakeFiles/example_vision_configuration_cpp.dir/src/vision_config/example_vision_configuration.cpp.o"
 )
 

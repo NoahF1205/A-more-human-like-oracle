@@ -1,0 +1,8 @@
+prefix=/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel
+
+Name: mbot_catching
+Description: Description of mbot_catching
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

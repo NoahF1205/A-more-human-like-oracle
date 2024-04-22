@@ -1,8 +1,8 @@
-prefix=/home/noahfang/Documents/Lab/Human_modeling/devel
+prefix=/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel
 
 Name: kortex_driver
 Description: Description of kortex_driver
 Version: 2.2.2
-Cflags: -I/home/noahfang/Documents/Lab/Human_modeling/devel/include
+Cflags: -I/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/include
 Libs: -L${prefix}/lib 
 Requires: actionlib_msgs

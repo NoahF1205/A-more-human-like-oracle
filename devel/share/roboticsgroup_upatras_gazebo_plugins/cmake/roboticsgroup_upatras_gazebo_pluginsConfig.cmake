@@ -67,14 +67,14 @@ set(roboticsgroup_upatras_gazebo_plugins_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(roboticsgroup_upatras_gazebo_plugins_SOURCE_PREFIX /home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins)
-  set(roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX /home/noahfang/Documents/Lab/Human_modeling/devel)
+  set(roboticsgroup_upatras_gazebo_plugins_SOURCE_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins)
+  set(roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/devel)
   set(roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX "")
   set(roboticsgroup_upatras_gazebo_plugins_PREFIX ${roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX})
 else()
   set(roboticsgroup_upatras_gazebo_plugins_SOURCE_PREFIX "")
   set(roboticsgroup_upatras_gazebo_plugins_DEVEL_PREFIX "")
-  set(roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX /home/noahfang/Documents/Lab/Human_modeling/install)
+  set(roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX /home/noahfang/Documents/Lab/A-more-human-like-oracle/install)
   set(roboticsgroup_upatras_gazebo_plugins_PREFIX ${roboticsgroup_upatras_gazebo_plugins_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(roboticsgroup_upatras_gazebo_plugins_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/include " STREQUAL " ")
+if(NOT "/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/include " STREQUAL " ")
   set(roboticsgroup_upatras_gazebo_plugins_INCLUDE_DIRS "")
-  set(_include_dirs "/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/include")
+  set(_include_dirs "/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/include")
   if(NOT "https://github.com/roboticsgroup/roboticsgroup_upatras_gazebo_plugins/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://github.com/roboticsgroup/roboticsgroup_upatras_gazebo_plugins/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/third_party/r
         message(FATAL_ERROR "Project 'roboticsgroup_upatras_gazebo_plugins' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'roboticsgroup_upatras_gazebo_plugins' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/noahfang/Documents/Lab/Human_modeling/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'roboticsgroup_upatras_gazebo_plugins' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/${idir}'.  ${_report}")
     endif()
     _list_append_unique(roboticsgroup_upatras_gazebo_plugins_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/noahfang/Documents/Lab/Human_modeling/devel/lib;/home/noahfang/Documents/Lab/Human_modeling/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
