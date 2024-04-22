@@ -1,8 +1,0 @@
-prefix=/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel
-
-Name: kortex_control
-Description: Description of kortex_control
-Version: 2.2.2
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

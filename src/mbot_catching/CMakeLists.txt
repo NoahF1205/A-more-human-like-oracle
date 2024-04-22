@@ -10,12 +10,12 @@ project(mbot_catching)
 find_package(catkin REQUIRED COMPONENTS
   actionlib
   geometry_msgs
+  message_generation
   rospy
   sensor_msgs
   sound_play
   std_msgs
   tf
-  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -52,12 +52,11 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  ExperimentData.msg
-  EnvStatistic.msg
-)
-
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -74,10 +73,10 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   geometry_msgs#   sensor_msgs#   std_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -111,7 +110,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES mbot_catching
-#  CATKIN_DEPENDS actionlib geometry_msgs rospy sensor_msgs sound_play std_msgs tf
+#  CATKIN_DEPENDS actionlib geometry_msgs message_generation rospy sensor_msgs sound_play std_msgs tf
 #  DEPENDS system_lib
 )
 
@@ -165,12 +164,10 @@ include_directories(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-catkin_install_python(PROGRAMS
-  scripts/arm_control.py
-  scripts/exit_with_error.py
-  scripts/recorder_node.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+# catkin_install_python(PROGRAMS
+#   scripts/my_python_script
+#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

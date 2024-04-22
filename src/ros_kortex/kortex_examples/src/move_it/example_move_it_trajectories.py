@@ -1,4 +1,4 @@
-#！/home/noahfang/miniconda3/envs/RL_Lab/bin/ python3
+#!/usr/bin/env python3
 
 # Software License Agreement (BSD License)
 #
