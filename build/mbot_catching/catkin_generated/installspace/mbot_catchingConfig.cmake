@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(mbot_catching_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "include " STREQUAL " ")
   set(mbot_catching_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/noahfang/Documents/Lab/A-more-human-like-oracle/install/lib;/opt/ros/noetic/lib)
+    foreach(path /home/noahfang/Documents/Lab/A-more-human-like-oracle/install/lib;/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(mbot_catching_EXPORTED_TARGETS "")
+set(mbot_catching_EXPORTED_TARGETS "mbot_catching_generate_messages_cpp;mbot_catching_generate_messages_eus;mbot_catching_generate_messages_lisp;mbot_catching_generate_messages_nodejs;mbot_catching_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${mbot_catching_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -214,7 +214,7 @@ foreach(depend ${depends})
   _list_append_deduplicate(mbot_catching_EXPORTED_TARGETS ${${mbot_catching_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "mbot_catching-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${mbot_catching_DIR}/${extra})

@@ -7,8 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel:$CMAKE_PREFIX_PATH"
-export PATH='/opt/ros/noetic/bin:/home/noahfang/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
 export PWD='/home/noahfang/Documents/Lab/A-more-human-like-oracle/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/noahfang/Documents/Lab/A-more-human-like-oracle/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/noahfang/Documents/Lab/A-more-human-like-oracle/src:$ROS_PACKAGE_PATH"
