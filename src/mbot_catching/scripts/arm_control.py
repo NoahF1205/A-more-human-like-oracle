@@ -3,7 +3,7 @@ from sensor_msgs.msg import JointState
 import numpy as np
 import rospy
 
-class arm_sim:
+class ArmSim:
     def __init__(self, seed=0):
         self.seed = seed
         np.random.seed(seed)
