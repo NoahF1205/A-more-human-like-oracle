@@ -10,7 +10,7 @@ import tf
 #http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API#Set_and_Get_Model_Pose_and_Twist_in_Simulation_via_Service
 class MbotSim:
     def __init__(self, model_name='mbot', min_r=0.2, max_r=0.6):
-        rospy.init_node('mbot_sim_controller', anonymous=True)
+        # rospy.init_node('mbot_sim_controller', anonymous=True)
 
         self.model_name = model_name
         self.min_r = min_r

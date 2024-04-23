@@ -9,7 +9,7 @@ class ArmSim:
         np.random.seed(seed)
         self.arm = kortex_arm.Arm()
 
-        rospy.init_node('arm_sim_controller', anonymous=True)
+        # rospy.init_node('arm_sim_controller', anonymous=True)
 
     def get_joint_state(self):
         state = rospy.wait_for_message(

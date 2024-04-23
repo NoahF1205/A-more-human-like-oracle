@@ -8,7 +8,7 @@ class ExperimentAgent:
                  noise_eps=0.1,):
         self.env = env
         self.action_space = env.action_space
-        self.observation_space = env.observation_space
+        # self.observation_space = env.observation_space
         self.epsilon = noise_eps
         self.mbot_height = 0.1
         self.discrete_actions = {"forward": np.array([1, 0, 0, 0, 0, 0, 0]),
@@ -44,6 +44,8 @@ class ExperimentAgent:
         distance_x_y = np.linalg.norm(mbot_pos - eef_pos[:2])
         distance_z = np.linalg.norm(self.mbot_height - eef_pos[2])
         # choose the action that minimize the distance
-        simulated_delta = {k: (np.abs(distance_x_y - v[:2]*sc) + np.abs(distance_z - v[2]*sc)) for k, v in self.discrete_actions.items()}
-        optimal_action = min(simulated_delta, key=simulated_delta.get)
+        simulated_delta = {k: (np.abs(distance_x_y + v[:2]*sc) + np.abs(distance_z + v[2]*sc)) for k, v in self.discrete_actions.items()}
+        # print(simulated_delta)
+        optimal_action = min(simulated_delta, key=lambda k: simulated_delta[k].mean())
+        print(f"optimal action: {optimal_action}")
         return self.discrete_actions[optimal_action]
