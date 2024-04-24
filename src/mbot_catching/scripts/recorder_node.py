@@ -21,23 +21,23 @@ import keyboard
 class ExperimentRecorder:
     def __init__(self):
         rospy.init_node('experiment_recorder')
-        self.freq = rospy.get_param('~frequency')  # 从参数服务器获取频率
+        self.freq = rospy.get_param('~frequency')  # get frequency from ros parameter 
 
-        self.pub = rospy.Publisher('/exp/experiment_recording_flow', ExperimentData, queue_size=10)
+        self.pub = rospy.Publisher('/exp/hf', ExperimentData, queue_size=10)
         self.counter = 0
         
         self.rosbag_init()
-        self.run_experiment()
-
-        # Start recording data in a separate thread
+        # Start recording data with rosbag in  a separate thread
         self.recording_thread = Thread(target=self.rosbag_record)
         self.recording_thread.start()
+        # Start feedback inquiry section
+        self.run_experiment()
 
         # Register shutdown hook to handle clean exits
         rospy.on_shutdown(self.rosbag_save)
 
     def rosbag_init(self):
-        # todo:检索列表查看到了第n个exp，创建目录./data/exp_n
+        """Set rosbag saving dir and filename and check if exp starts"""
         data_dir = './data'
         exp_prefix = 'exp_'
         if not os.path.exits(data_dir):
@@ -50,11 +50,17 @@ class ExperimentRecorder:
 
         self.bag = rosbag.Bag(os.path.join(new_exp_dir, f'{exp_prefix}{new_exp_number}.bag'), 'w')
         
+        # check ros parameter: is_start，if exp is not started yet, block
+        rospy.loginfo("Waiting for the exp to start...")
+        is_start = rospy.get_param('/is_start')
+        while not is_start and not rospy.is_shutdown():
+            rospy.sleep(0.01)  
+            is_start = rospy.get_param('/is_start')
+            
+        # get the number 'n' of data/exp_n
         def get_max_exp_number(directory, prefix):
-                # 获取所有匹配的目录名
                 dirs = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d)) and d.startswith(prefix)]
                 
-                # 使用正则表达式提取数字部分，并找出最大值
                 max_number = 0
                 for dir in dirs:
                     match = re.match(f'{prefix}(\d+)', dir)
@@ -64,13 +70,22 @@ class ExperimentRecorder:
                             max_number = number
                 
                 return max_number
-    
+
     def rosbag_record(self):
+        """Start rosbag recording"""
         rospy.loginfo("Rosbag recording starts!")
-        topic_name = '/exp/experiment_recording_flow'
-        sub = rospy.Subscriber(topic_name, ExperimentData, callback)
+        topics = [
+            ('/exp/hf', ExperimentData),
+            ('/exp/obs', xxx),
+            ('/exp/statistic', )
+        ]
+        for topic_name, msg_type in topics:
+            rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
+        
         rospy.spin()
-        def callback(msg):
+
+    def callback(self, msg, topic_name):
+        """Callback function for rosbag recording"""
             self.bag.write(topic_name, msg)
 
     def rosbag_save(self):
@@ -79,9 +94,10 @@ class ExperimentRecorder:
         self.recording_thread.join()
         self.bag.close()
         self.set_param('is_start', False)
-        rospy.loginfo("Rosbag successfully saved.")
+        rospy.loginfo("Rosbag successfully saved. Exp completed!")
 
     def publish_feedback(self, seq, hf_value, delay)
+        """Publish HF"""
         feedback = ExperimentData()
         feedback.header.stamp = rospy.Time.now()
         feedback.header.seq = seq
@@ -91,14 +107,8 @@ class ExperimentRecorder:
         self.pub.publish(feedback)
 
     def run_experiment(self):
-        # 检查ros parameter: is_start，如果catching game还没开始就先阻塞在这里
-        rospy.loginfo("Waiting for the game to start...")
-        is_start = rospy.get_param('/is_start')
-        while not is_start and not rospy.is_shutdown():
-            rospy.sleep(0.1)  # 间隔一段时间检查参数
-            is_start = rospy.get_param('/is_start')
-        rospy.loginfo("Game started, recording will commence.")
-
+        """HF inquiry procedure"""
+        rospy.loginfo("Exp started, HF inquiry procedure will commence.")
         seq = 0
         key_to_hf = {
             'a': -2,
@@ -130,4 +140,9 @@ class ExperimentRecorder:
                         self.publish_feedback(seq, hf_value, delay)
                         is_hf = True
                         rospy.loginfo(f"Key '{pressed_key}' is pressed, the represented feedback value is {hf_value}.")
-                        rospy.sleep(freq - delay)     
+                        rospy.sleep(freq - delay)  
+                        seq += 1
+                        break   
+
+if __name__ == "__main__":
+    start_record = ExperimentRecorder()
