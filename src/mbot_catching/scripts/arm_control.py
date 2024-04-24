@@ -3,13 +3,13 @@ from sensor_msgs.msg import JointState
 import numpy as np
 import rospy
 
-class arm_sim:
+class ArmSim:
     def __init__(self, seed=0):
         self.seed = seed
         np.random.seed(seed)
         self.arm = kortex_arm.Arm()
 
-        rospy.init_node('arm_sim_controller', anonymous=True)
+        # rospy.init_node('arm_sim_controller', anonymous=True)
 
     def get_joint_state(self):
         state = rospy.wait_for_message(
