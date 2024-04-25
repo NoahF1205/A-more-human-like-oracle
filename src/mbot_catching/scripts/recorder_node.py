@@ -8,7 +8,7 @@
 """
 #!/home/noahfang/miniconda3/envs/RL_Lab/bin/python
 import rospy
-from mbot_catching.msg import ExperimentData
+from mbot_catching.msg import HF
 from threading import Thread
 import sys
 import select
@@ -23,7 +23,7 @@ class ExperimentRecorder:
         rospy.init_node('experiment_recorder')
         self.freq = rospy.get_param('~frequency')  # get frequency from ros parameter 
 
-        self.pub = rospy.Publisher('/exp/hf', ExperimentData, queue_size=10)
+        self.pub = rospy.Publisher('/exp/hf', HF, queue_size=10)
         self.counter = 0
         
         self.rosbag_init()
@@ -75,9 +75,9 @@ class ExperimentRecorder:
         """Start rosbag recording"""
         rospy.loginfo("Rosbag recording starts!")
         topics = [
-            ('/exp/hf', ExperimentData),
+            ('/exp/hf', HF),
             ('/exp/obs', xxx),
-            ('/exp/statistic', )
+            ('/exp/statistic', xxx)
         ]
         for topic_name, msg_type in topics:
             rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
@@ -98,12 +98,12 @@ class ExperimentRecorder:
 
     def publish_feedback(self, seq, hf_value, delay)
         """Publish HF"""
-        feedback = ExperimentData()
+        feedback = HF()
         feedback.header.stamp = rospy.Time.now()
         feedback.header.seq = seq
         feedback.hf_value = hf_value
         feedback.delay = delay
-        rospy.loginfo(f"Seq: {seq}, HF: {hf_value}, Delay: {elapsed_time:.2f} seconds")
+        rospy.loginfo(f"Seq: {seq}, HF: {hf_value}, Delay: {delay:.2f} seconds")
         self.pub.publish(feedback)
 
     def run_experiment(self):
