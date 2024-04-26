@@ -8,7 +8,7 @@
 """
 #!/home/aabl-lab/miniconda3/envs/qd/bin/python
 import rospy
-from mbot_catching.msg import HF
+from mbot_catching.msg import HF, EnvObs, EnvStat
 from threading import Thread
 import sys
 import select
@@ -23,7 +23,7 @@ class ExperimentRecorder:
         rospy.init_node('experiment_recorder')
         self.freq = rospy.get_param('~frequency')  # get frequency from ros parameter 
 
-        self.pub = rospy.Publisher('/exp/hf', HF, queue_size=10)
+        self.pub = rospy.Publisher('/exp/HF', HF, queue_size=10)
         self.counter = 0
         
         self.rosbag_init()
@@ -71,18 +71,18 @@ class ExperimentRecorder:
                 
                 return max_number
 
-    # def rosbag_record(self):
-    #     """Start rosbag recording"""
-    #     rospy.loginfo("Rosbag recording starts!")
-    #     topics = [
-    #         ('/exp/hf', HF),
-    #         ('/exp/obs', xxx),
-    #         ('/exp/statistic', xxx)
-    #     ]
-    #     for topic_name, msg_type in topics:
-    #         rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
+    def rosbag_record(self):
+        """Start rosbag recording"""
+        rospy.loginfo("Rosbag recording starts!")
+        topics = [
+            ('/exp/HF', HF),
+            ('/exp/EnvObs', EnvObs),
+            ('/exp/EnvStat', EnvStat)
+        ]
+        for topic_name, msg_type in topics:
+            rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
         
-    #     rospy.spin()
+        rospy.spin()
 
     def callback(self, msg, topic_name):
         """Callback function for rosbag recording"""

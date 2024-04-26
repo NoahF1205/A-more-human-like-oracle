@@ -1,3 +1,2 @@
 std_msgs/Header header
-float32 hf_value
-string delay
+float32[] cartesian_state

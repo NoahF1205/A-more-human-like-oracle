@@ -14,15 +14,30 @@ action_home= [0.2, 0.4, 0.3, 1.5799180530025816 + np.pi/2 , -0.01589837991006801
 
 class MbotCatchingEnv:
     def __init__(self):
-        # rospy.init_node('mbot_catching_env', anonymous=True)
-        self.mbot_sim = MbotSim()
-        self.arm_sim = ArmSim()
+        rospy.init_node('experiment', anonymous=True)
+        self.mbot_sim = None
+        self.arm_sim = None
         self.seed = 0
         self.action_dim = 7
         self.action_spc = spaces.Box(low=-1, high=1, shape=(self.action_dim,), dtype=np.float32)
         self.obs = 12
         self.state = None
         self.done = False
+        # Register shutdown hook to reset mbot_catching_world
+        rospy.on_shutdown(self.reset())
+
+    def initialize_sims(self):
+        # Initialize Armsim and Mbotsim in seperate threads
+        threading.Thread(target=self.self.init_mbot_sim).start()
+        threading.Thread(target=self.self.init_arm_sim).start()
+
+    def init_mbot_sim(self):
+        self.mbot_sim = MbotSim()
+        rospy.loginfo("MbotSim is initialized!")
+
+    def init_arm_sim(self):
+        self.arm_sim = ArmSim()
+        rospy.loginfo("ArmSim is initialized!")
 
     def reset(self):
         self.mbot_sim.reset()
