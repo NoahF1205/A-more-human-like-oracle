@@ -14,12 +14,6 @@ def run_experiment():
     # init agent
     agent = ExperimentAgent(env)
 
-
-    # set up publisher, publish experiment start, for activate timing node
-    # TODO: COMPLETE THIS WITH TIMING NODE
-    pub = rospy.Publisher('experiment_start', String, queue_size=10)
-    pub.publish('start')
-
     # run experiment
     state = env.reset()
     rospy.sleep(1)

@@ -56,3 +56,5 @@ class ArmSim:
         state = self.get_cartisian_state()
         reward = 0
         return state, reward, done, None
+    
+    # def check_safe(self, action):
