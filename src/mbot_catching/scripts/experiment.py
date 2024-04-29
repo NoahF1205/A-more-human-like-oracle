@@ -28,25 +28,25 @@ def run_experiment():
         obs = EnvObs()
         obs.header.stamp = rospy.Time.now()
         obs.header.seq = seq
-        obs.join_state = env.get_state()
+        obs.cartesian_state = env.get_state()
         obs_pub.publish(obs)
-
+        prev_state = state
         action = agent.get_action(state)
         state, reward, done, _ = env.step(action)
-        print("reward: ", reward)
-        print("state: ", state)
-        print("done: ", done)
+        # print("reward: ", reward)
+        # print("state: ", state)
+        # print("done: ", done)
         
         obs = EnvObs()
         obs.header.stamp = rospy.Time.now()
         obs.header.seq = seq
-        obs.join_state = env.get_state()
+        obs.cartesian_state = env.get_state()
         obs_pub.publish(obs)
 
         stat = EnvStat()
         stat.header.stamp = rospy.Time.now()
         stat.header.seq = seq
-        stat.optimal_policy = agent.get_optimal_action()
+        stat.optimal_policy = agent.get_optimal_action(prev_state)
         stat.action = action
         stat.reward = reward
         stat_pub.publish(stat)

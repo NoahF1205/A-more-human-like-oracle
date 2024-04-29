@@ -1,12 +1,13 @@
 from armpy import kortex_arm
+import armpy
 from sensor_msgs.msg import JointState
 import numpy as np
 import rospy
 
 class ArmSim:
     def __init__(self, seed=0):
-        self.seed = seed
-        np.random.seed(seed)
+        # self.seed = seed
+        # np.random.seed(seed)
         self.arm = kortex_arm.Arm()
 
         # rospy.init_node('arm_sim_controller', anonymous=True)
@@ -19,9 +20,9 @@ class ArmSim:
     def get_cartisian_state(self):
         return self.arm.get_eef_pose()
     
-    def seed(self, seed):
-        self.seed = seed
-        np.random.seed(seed)
+    # def seed(self, seed):
+    #     self.seed = seed
+    #     np.random.seed(seed)
     
     def reset(self):
         self.arm.home_arm()
@@ -58,3 +59,10 @@ class ArmSim:
         return state, reward, done, None
     
     # def check_safe(self, action):
+
+if __name__ == '__main__':
+    arm_sim = ArmSim()
+    arm_sim.reset()
+    action = [0.2, 0.2, 0.2, 0, 0, 0, 0]
+    arm_sim.step(action)
+    print("done")

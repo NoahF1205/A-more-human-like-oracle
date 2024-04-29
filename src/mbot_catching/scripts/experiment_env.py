@@ -23,21 +23,35 @@ class MbotCatchingEnv:
         self.obs = 12
         self.state = None
         self.done = False
+        self.mbot_initialized = threading.Event()
+        self.arm_initialized = threading.Event()
+
         # Register shutdown hook to reset mbot_catching_world
-        rospy.on_shutdown(self.reset())
+        self.initialize_sims()
+        rospy.on_shutdown(self.reset)
 
     def initialize_sims(self):
         # Initialize Armsim and Mbotsim in seperate threads
-        threading.Thread(target=self.self.init_mbot_sim).start()
-        threading.Thread(target=self.self.init_arm_sim).start()
+        mbot_thread = threading.Thread(target=self.init_mbot_sim)
+        arm_thread  = threading.Thread(target=self.init_arm_sim)
+        mbot_thread.daemon = True
+        arm_thread.daemon = True
+        mbot_thread.start()
+        arm_thread.start()
+        self.mbot_initialized.wait()
+        self.arm_initialized.wait()
+
 
     def init_mbot_sim(self):
         self.mbot_sim = MbotSim()
         rospy.loginfo("MbotSim is initialized!")
+        self.mbot_initialized.set()
 
     def init_arm_sim(self):
         self.arm_sim = ArmSim()
         rospy.loginfo("ArmSim is initialized!")
+        self.arm_initialized.set()
+
 
     def reset(self):
         self.mbot_sim.reset()
@@ -56,8 +70,8 @@ class MbotCatchingEnv:
         current_state.append(0)
         # add gripper state
         current_state = np.array(current_state, dtype=np.float32)
-        print("current state: ", current_state)
-        print("action: ", action)
+        # print("current state: ", current_state)
+        # print("action: ", action)
         action = current_state + action
         _, _, self.done, _ = self.arm_sim.step(action)
         self.state = self.get_state()
@@ -104,3 +118,8 @@ class MbotCatchingEnv:
     @property
     def observation_space(self):
         return self.obs_space
+    
+if __name__ == "__main__":
+    # test the environment
+    env = MbotCatchingEnv()
+    env.reset()

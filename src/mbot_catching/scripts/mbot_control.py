@@ -66,7 +66,8 @@ class MbotSim:
     def reset(self):
         # random position 
         radius = np.random.uniform(self.min_r, self.max_r)
-        angle = np.random.uniform(0, 2 * np.pi)
+        # angle = np.random.uniform(0, 2 * np.pi)
+        angle = np.random.uniform(0, np.pi)
         initial_position = [radius * np.cos(angle), radius * np.sin(angle), 0]  
         initial_orientation = [0, 0, 0, 1]  
         result = self.set_model_state(initial_position, initial_orientation)
