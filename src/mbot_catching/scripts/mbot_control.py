@@ -30,6 +30,7 @@ class MbotSim:
             6: (1, np.pi * 2),       # Faster left
             7: (1, -np.pi * 2)       # Faster right
         }
+        self.max_speed = 0.1
 
     def set_model_state(self, position, orientation):
         rospy.wait_for_service('/gazebo/set_model_state')
@@ -102,7 +103,7 @@ class MbotSim:
 
         # Check if the new position is within the safe bounds
         if not self.is_within_bounds(new_x, new_y):
-            rospy.logerr("Calculated position is out of safe bounds.")
+            # rospy.logerr("Calculated position is out of safe bounds.")
             return False
 
         # Publish velocity messages to control robot's movement
@@ -117,6 +118,18 @@ class MbotSim:
         vel_msg.angular.z = 0
         self.velocity_publisher.publish(vel_msg)
         return True
+    
+    def random_move(self):
+        rospy.loginfo("called random move!")
+        done = False
+        while not done:
+            direction = np.random.randint(0, 7)
+            speed = np.random.uniform(0,self.max_speed)
+            duration = 1
+            done = self.move_mbot(direction, 
+                                  speed,
+                                  duration)
+        
 
     def is_within_bounds(self, x, y):
         """Check if the position is within the safe bounds"""

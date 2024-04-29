@@ -7,6 +7,7 @@ from arm_control import ArmSim
 from mbot_control import MbotSim
 import gymnasium.spaces as spaces
 import threading
+from customized_mbot_trajectory import customized_mbot_trajectory
 
 
 home_pose = [0.576103925704956, 0.0021510878577828407, 0.43399396538734436, 1.5707133693269406, -0.0009434863237384807, 1.5723171249353864, 0]
@@ -25,10 +26,22 @@ class MbotCatchingEnv:
         self.done = False
         self.mbot_initialized = threading.Event()
         self.arm_initialized = threading.Event()
+        
+
 
         # Register shutdown hook to reset mbot_catching_world
         self.initialize_sims()
+        thread = threading.Thread(target=customized_mbot_trajectory,args=[self.mbot_sim])
+        thread.start()
+        
         rospy.on_shutdown(self.reset)
+        
+        # self.stop_thread = threading.Event()
+        # self.stop_thread.set()
+        # self.stop_thread.clear()
+        # self.mbot_moving_thread = threading.Thread(target=self.mbot_random_move())
+        # self.mbot_moving_thread.start()
+        rospy.loginfo("init done!")
 
     def initialize_sims(self):
         # Initialize Armsim and Mbotsim in seperate threads
@@ -73,10 +86,13 @@ class MbotCatchingEnv:
         # print("current state: ", current_state)
         # print("action: ", action)
         action = current_state + action
+        # self.do_random_move()
         _, _, self.done, _ = self.arm_sim.step(action)
+        
         self.state = self.get_state()
         reward = self.calculate_reward()
         return self.state, reward, self.done, None
+
 
     def get_state(self):
         mbot_state = self.mbot_sim.get_model_state()
@@ -110,6 +126,20 @@ class MbotCatchingEnv:
         mbot_position = np.array([mbot_state.pose.position.x, mbot_state.pose.position.y])
         return np.linalg.norm(mbot_position) < 0.5
     
+    def mbot_random_move(self):
+        while not self.stop_thread.is_set():
+                customized_mbot_trajectory(self.mbot_sim)
+
+    def do_random_move(self):
+        if not self.stop_thread.is_set():
+            self.stop_thread.clear()
+        else:
+            self.stop_thread.clear()
+    
+    def stop_random_move(self):
+        self.stop_thread.set()
+
+    
     @property
     def action_space(self):
         return self.action_spc
@@ -118,6 +148,7 @@ class MbotCatchingEnv:
     @property
     def observation_space(self):
         return self.obs_space
+    
     
 if __name__ == "__main__":
     # test the environment

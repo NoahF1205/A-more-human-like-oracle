@@ -7,6 +7,7 @@ def customized_mbot_trajectory(mbot):
     """Mbot_trajectory design:
         Randomly move in 8 directions for random time
     """
+    rospy.loginfo("random moving!")
     # todo:1. should have some pause time whithin the move_bot func to make sure it get the right place
     durations = [0.1, 0.3, 0.5, 1.0]
     velocities = [0.1/2, 0.3/2, 0.5/2]
@@ -16,4 +17,5 @@ def customized_mbot_trajectory(mbot):
         di = random.choice(directions)
         du = random.choice(durations)    
         mbot.move_mbot(di, v, du)
+
     
