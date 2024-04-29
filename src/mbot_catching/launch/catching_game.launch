@@ -1,6 +1,0 @@
-<launch>
-    <param name="is_start" value="true"/>
-    <node pkg="some_package" type="some_node" name="node_name">
-        <!-- 节点特定的参数可以在这里定义 -->
-    </node>
-</launch>

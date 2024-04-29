@@ -6,9 +6,9 @@
 6. publish feedback: id, hf value, delay
 7. go back to 3
 """
-#!/home/noahfang/miniconda3/envs/RL_Lab/bin/python
+#!/home/aabl-lab/miniconda3/envs/qd/bin/python
 import rospy
-from mbot_catching.msg import HF
+from mbot_catching.msg import HF, EnvObs, EnvStat
 from threading import Thread
 import sys
 import select
@@ -23,7 +23,7 @@ class ExperimentRecorder:
         rospy.init_node('experiment_recorder')
         self.freq = rospy.get_param('~frequency')  # get frequency from ros parameter 
 
-        self.pub = rospy.Publisher('/exp/hf', HF, queue_size=10)
+        self.pub = rospy.Publisher('/exp/HF', HF, queue_size=10)
         self.counter = 0
         
         self.rosbag_init()
@@ -75,9 +75,9 @@ class ExperimentRecorder:
         """Start rosbag recording"""
         rospy.loginfo("Rosbag recording starts!")
         topics = [
-            ('/exp/hf', HF),
-            ('/exp/obs', xxx),
-            ('/exp/statistic', xxx)
+            ('/exp/HF', HF),
+            ('/exp/EnvObs', EnvObs),
+            ('/exp/EnvStat', EnvStat)
         ]
         for topic_name, msg_type in topics:
             rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
@@ -86,17 +86,17 @@ class ExperimentRecorder:
 
     def callback(self, msg, topic_name):
         """Callback function for rosbag recording"""
-            self.bag.write(topic_name, msg)
+        self.bag.write(topic_name, msg)
 
     def rosbag_save(self):
-        """Handles clean shutdown of the node and saves the rosbag."""12312312
+        """Handles clean shutdown of the node and saves the rosbag."""
         rospy.loginfo("Shutting down node, closing rosbag...")
         self.recording_thread.join()
         self.bag.close()
         self.set_param('is_start', False)
         rospy.loginfo("Rosbag successfully saved. Exp completed!")
 
-    def publish_feedback(self, seq, hf_value, delay)
+    def publish_feedback(self, seq, hf_value, delay):
         """Publish HF"""
         feedback = HF()
         feedback.header.stamp = rospy.Time.now()
@@ -140,7 +140,7 @@ class ExperimentRecorder:
                         self.publish_feedback(seq, hf_value, delay)
                         is_hf = True
                         rospy.loginfo(f"Key '{pressed_key}' is pressed, the represented feedback value is {hf_value}.")
-                        rospy.sleep(freq - delay)  
+                        rospy.sleep(self.freq - delay)  
                         seq += 1
                         break   
 

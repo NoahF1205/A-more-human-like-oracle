@@ -1,3 +1,4 @@
+#!/home/aabl-lab/miniconda3/envs/qd/bin/python
 import rospy
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
@@ -10,7 +11,7 @@ import tf
 #http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API#Set_and_Get_Model_Pose_and_Twist_in_Simulation_via_Service
 class MbotSim:
     def __init__(self, model_name='mbot', min_r=0.2, max_r=0.6):
-        rospy.init_node('mbot_sim_controller', anonymous=True)
+        # rospy.init_node('mbot_sim_controller', anonymous=True)
 
         self.model_name = model_name
         self.min_r = min_r
@@ -66,7 +67,8 @@ class MbotSim:
     def reset(self):
         # random position 
         radius = np.random.uniform(self.min_r, self.max_r)
-        angle = np.random.uniform(0, 2 * np.pi)
+        # angle = np.random.uniform(0, 2 * np.pi)
+        angle = np.random.uniform(0, np.pi)
         initial_position = [radius * np.cos(angle), radius * np.sin(angle), 0]  
         initial_orientation = [0, 0, 0, 1]  
         result = self.set_model_state(initial_position, initial_orientation)
