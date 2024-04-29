@@ -38,9 +38,22 @@ class ExperimentRecorder:
 
     def rosbag_init(self):
         """Set rosbag saving dir and filename and check if exp starts"""
+        # get the number 'n' of data/exp_n
+        def get_max_exp_number(directory, prefix):
+                dirs = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d)) and d.startswith(prefix)]
+                
+                max_number = 0
+                for dir in dirs:
+                    match = re.match(f'{prefix}(\d+)', dir)
+                    if match:
+                        number = int(match.group(1))
+                        if number > max_number:
+                            max_number = number
+                
+                return max_number
         data_dir = './data'
         exp_prefix = 'exp_'
-        if not os.path.exits(data_dir):
+        if not os.path.exists(data_dir):
             os.makedirs(data_dir)
         max_exp_number = get_max_exp_number(data_dir, exp_prefix)
 
@@ -56,20 +69,7 @@ class ExperimentRecorder:
         while not is_start and not rospy.is_shutdown():
             rospy.sleep(0.01)  
             is_start = rospy.get_param('/is_start')
-            
-        # get the number 'n' of data/exp_n
-        def get_max_exp_number(directory, prefix):
-                dirs = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d)) and d.startswith(prefix)]
-                
-                max_number = 0
-                for dir in dirs:
-                    match = re.match(f'{prefix}(\d+)', dir)
-                    if match:
-                        number = int(match.group(1))
-                        if number > max_number:
-                            max_number = number
-                
-                return max_number
+        
 
     def rosbag_record(self):
         """Start rosbag recording"""

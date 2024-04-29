@@ -2,8 +2,8 @@
 import rospy
 import numpy as np
 from std_msgs.msg import String
-from experiment_env import MbotCatchingEnv
-from agent import ExperimentAgent
+from sim_setting.experiment_env import MbotCatchingEnv
+from sim_setting.agent import ExperimentAgent
 from mbot_catching.msg import EnvObs, EnvStat
 
 def run_experiment():

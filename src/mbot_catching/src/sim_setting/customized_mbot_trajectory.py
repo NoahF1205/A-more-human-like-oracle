@@ -1,4 +1,4 @@
-from mbot_control import MbotSim
+from .mbot_control import MbotSim
 import numpy as np
 import random
 import rospy
