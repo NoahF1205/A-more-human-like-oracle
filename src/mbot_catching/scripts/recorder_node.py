@@ -6,17 +6,15 @@
 6. publish feedback: id, hf value, delay
 7. go back to 3
 """
-#!/home/aabl-lab/miniconda3/envs/qd/bin/python
 import rospy
 from mbot_catching.msg import HF, EnvObs, EnvStat
 from threading import Thread
 import sys
-import select
 import rosbag
 import time
 import os
 import re
-import keyboard
+from pynput.keyboard import Listener, Key
 
 class ExperimentRecorder:
     def __init__(self):
@@ -24,12 +22,23 @@ class ExperimentRecorder:
         self.freq = rospy.get_param('~frequency')  # get frequency from ros parameter 
 
         self.pub = rospy.Publisher('/exp/HF', HF, queue_size=10)
-        self.counter = 0
+        self.key_to_hf = {
+            'a': -2,
+            's': -1,
+            'd': 0,
+            'f': 1,
+            'g': 2
+        }
         
         self.rosbag_init()
-        # Start recording data with rosbag in  a separate thread
+        # Start recording data with rosbag in a separate thread
         self.recording_thread = Thread(target=self.rosbag_record)
         self.recording_thread.start()
+        
+        # Start listening to keyboard inputs in a separate thread
+        self.listener = Listener(on_press=self.on_press)
+        self.listener.start()
+
         # Start feedback inquiry section
         self.run_experiment()
 
@@ -41,7 +50,6 @@ class ExperimentRecorder:
         # get the number 'n' of data/exp_n
         def get_max_exp_number(directory, prefix):
                 dirs = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d)) and d.startswith(prefix)]
-                
                 max_number = 0
                 for dir in dirs:
                     match = re.match(f'{prefix}(\d+)', dir)
@@ -51,12 +59,12 @@ class ExperimentRecorder:
                             max_number = number
                 
                 return max_number
-        data_dir = './data'
+
+        data_dir = '/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/mbot_catching/data'
         exp_prefix = 'exp_'
         if not os.path.exists(data_dir):
             os.makedirs(data_dir)
         max_exp_number = get_max_exp_number(data_dir, exp_prefix)
-
         new_exp_number = max_exp_number + 1
         new_exp_dir = os.path.join(data_dir, f'{exp_prefix}{new_exp_number}')
         os.makedirs(new_exp_dir)
@@ -69,7 +77,7 @@ class ExperimentRecorder:
         while not is_start and not rospy.is_shutdown():
             rospy.sleep(0.01)  
             is_start = rospy.get_param('/is_start')
-        
+        rospy.sleep(1)
 
     def rosbag_record(self):
         """Start rosbag recording"""
@@ -93,7 +101,7 @@ class ExperimentRecorder:
         rospy.loginfo("Shutting down node, closing rosbag...")
         self.recording_thread.join()
         self.bag.close()
-        self.set_param('is_start', False)
+        rospy.set_param('is_start', False)
         rospy.loginfo("Rosbag successfully saved. Exp completed!")
 
     def publish_feedback(self, seq, hf_value, delay):
@@ -105,44 +113,37 @@ class ExperimentRecorder:
         feedback.delay = delay
         rospy.loginfo(f"Seq: {seq}, HF: {hf_value}, Delay: {delay:.2f} seconds")
         self.pub.publish(feedback)
+        
+    def on_press(self, key):
+        try:
+            key_char = key.char
+            if key_char in self.key_to_hf and self.is_hf == False:
+                hf_value = self.key_to_hf[key_char]
+                self.hf_value = hf_value
+                self.delay = (rospy.Time.now() - self.start_time).to_sec()
+                self.publish_feedback(self.seq, hf_value, (rospy.Time.now() - self.start_time).to_sec())
+                self.is_hf = True
+        except AttributeError:
+            pass  # Special keys (like space, ctrl, etc.) are ignored
 
     def run_experiment(self):
         """HF inquiry procedure"""
         rospy.loginfo("Exp started, HF inquiry procedure will commence.")
-        seq = 0
-        key_to_hf = {
-            'a': -2,
-            's': -1,
-            'd': 0,
-            'f': 1,
-            'g': 2
-        }
+        self.seq = 0
+        self.start_time = rospy.Time.now()
+        self.is_hf = False
+        rospy.loginfo("Feel free to type emoji tagged keys as your feedback!")
         while not rospy.is_shutdown():
-            start_time = time.time()
-            is_hf = False
-            rospy.loginfo("Feel free to type emoji taged keys as your feedback!")
-            while True:
-                rospy.sleep(0.01)
-                if time.time() - start_time > self.freq:
-                    if not is_hf: 
-                        self.publish_feedback(seq, None, None)
-                    seq += 1    
-                    break
-                if keyboard.is_pressed('a') or keyboard.is_pressed('s') or keyboard.is_pressed('d') or keyboard.is_pressed('f') or keyboard.is_pressed('g'):
-                    pressed_key = None
-                    for key in key_to_hf:
-                        if keyboard.is_pressed(key):
-                            pressed_key = key
-                            break
-                    if pressed_key:
-                        hf_value = key_to_hf[pressed_key]
-                        delay = time.time() - start_time
-                        self.publish_feedback(seq, hf_value, delay)
-                        is_hf = True
-                        rospy.loginfo(f"Key '{pressed_key}' is pressed, the represented feedback value is {hf_value}.")
-                        rospy.sleep(self.freq - delay)  
-                        seq += 1
-                        break   
+            elapsed_time = (rospy.Time.now() - self.start_time).to_sec()
+            if elapsed_time - self.freq > 1e-3:
+                if self.is_hf:
+                    self.publish_feedback(self.seq, self.hf_value, self.delay)
+                else:
+                    self.publish_feedback(self.seq, float('nan'), float('nan'))
+                self.seq += 1
+                self.start_time = rospy.Time.now()
+                self.is_hf = False
+                rospy.loginfo("Feel free to type emoji tagged keys as your feedback!")
 
 if __name__ == "__main__":
     start_record = ExperimentRecorder()
