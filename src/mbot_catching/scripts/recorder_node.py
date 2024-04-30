@@ -60,7 +60,7 @@ class ExperimentRecorder:
                 
                 return max_number
 
-        data_dir = '/home/noahfang/Documents/Lab/A-more-human-like-oracle/src/mbot_catching/data'
+        data_dir = '/home/aabl-lab/prob-rob-final/A-more-human-like-oracle/src/mbot_catching/data'
         exp_prefix = 'exp_'
         if not os.path.exists(data_dir):
             os.makedirs(data_dir)
