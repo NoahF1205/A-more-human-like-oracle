@@ -1,0 +1,154 @@
+<robot name="camera_mount" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <!-- Base of the camera mount -->
+  <link name="camera_base_link">
+    <visual>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.05"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <mass value="100.0"/>
+      <inertia ixx="0.00095" ixy="0" ixz="0" iyy="0.00095" iyz="0" izz="0.00167"/>
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.05"/>
+      </geometry>
+    </collision>
+    <gazebo>
+      <self_collide>0</self_collide>
+      <kinematic> true </kinematic>
+      <static>true</static>
+      <collide_without_contact>false</collide_without_contact>
+    </gazebo>
+  </link>
+
+  <!-- First fixed joint connecting the base to the pole -->
+  <joint name="joint1" type="fixed">
+    <parent link="camera_base_link"/>
+    <child link="pole_link"/>
+    <origin xyz="0 0 0.025" rpy="0 0 0"/>
+  </joint>
+
+<!-- Pole of the camera mount -->
+  <link name="pole_link">
+    <visual>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.5" radius="0.02"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.000625" ixy="0" ixz="0" iyy="0.000625" iyz="0" izz="0.0001"/>
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.5" radius="0.02"/>
+      </geometry>
+    </collision>
+    <gazebo>
+      <self_collide>0</self_collide>
+      <kinematic> true </kinematic>
+      <collide_without_contact>false</collide_without_contact>
+    </gazebo>
+  </link>
+
+
+  <!-- Second joint allowing rotation of the holder link -->
+  <joint name="holder_joint" type="continuous">
+    <parent link="pole_link"/>
+    <child link="camera_holder_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <!-- Holder for the camera, allowing rotation -->
+  <link name="camera_holder_link">
+    <visual>
+      <origin xyz="0.25 0 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder length="0.5" radius="0.02"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0.25 0 0" rpy="0 1.57 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.000625" ixy="0" ixz="0" iyy="0.000625" iyz="0" izz="0.0001"/>
+    </inertial>
+    <collision>
+      <origin xyz="0.25 0 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder length="0.5" radius="0.02"/>
+      </geometry>
+    </collision>
+    <gazebo>
+      <self_collide>0</self_collide>
+      <kinematic> true </kinematic>
+      <collide_without_contact>false</collide_without_contact>
+    </gazebo>
+  </link>
+
+  <!-- Joint connecting the camera to the holder -->
+  <joint name="camera_joint" type="continuous">
+    <parent link="camera_holder_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.5 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <!-- Camera link -->
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.00005" ixy="0" ixz="0" iyy="0.00005" iyz="0" izz="0.00005"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <gazebo>
+      <self_collide>0</self_collide>
+      <kinematic> true </kinematic>
+      <collide_without_contact>false</collide_without_contact>
+    </gazebo>
+  </link>
+
+  <!-- Include the Gazebo plugin for camera -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera_sensor">
+      <camera>
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>30.0</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>

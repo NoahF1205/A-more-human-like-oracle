@@ -7,6 +7,10 @@
         <xacro:arg name="camera_offset_y" default="0"/>
         <xacro:arg name="camera_offset_z" default="2"/>
         <!-- Create laser reference frame -->
+
+        <link name="world"/>
+
+
         <link name="${prefix}_link">
             <inertial>
                 <mass value="0.1" />
@@ -17,7 +21,7 @@
             </inertial>
 
             <visual>
-                <origin xyz="$(arg camera_offset_x) $(arg camera_offset_y) $(arg camera_offset_z)" rpy="0 0 0" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
                 <geometry>
                     <box size="0.01 0.04 0.04" />
                     <!-- <box size="1 4 4" /> -->
@@ -32,6 +36,14 @@
                 </geometry>
             </collision>
         </link>
+     
+       <joint name="cam_joint" type="fixed">
+            <origin xyz="$(arg camera_offset_x) $(arg camera_offset_y) $(arg camera_offset_z)" rpy="0 1.57 0"/>
+            <parent link="world"/>
+            <child link="${prefix}_link"/>
+            
+        </joint>
+
         <gazebo reference="${prefix}_link">
             <material>Gazebo/Black</material>
         </gazebo>
@@ -73,7 +85,10 @@
             </sensor>
         </gazebo>
 
+    
     </xacro:macro>
 
+
+     
     <xacro:usb_camera prefix="camera"/>
 </robot>

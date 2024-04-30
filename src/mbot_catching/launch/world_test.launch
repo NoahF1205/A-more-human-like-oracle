@@ -24,4 +24,6 @@
     <!-- <node name="gazebo_gui" pkg="gazebo_ros" type="gui" respawn="false" output="screen"/> -->
     <node name="$(arg robot_name)_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
             args="-urdf -model $(arg robot_name) -param $(arg robot_name)_description -x $(arg x1) -y $(arg y1) -z $(arg z1) -robot_namespace $(arg robot_name)"/>
+    <node name="rviz" pkg="rviz" type="rviz" />
+
 </launch>
