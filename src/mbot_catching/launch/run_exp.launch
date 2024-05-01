@@ -1,7 +1,7 @@
 <launch>
-    <arg name="hf_frequency" default="0" />
+    <arg name="frequency" default="0" />
     <include file="$(find mbot_catching)/launch/exp.launch" />
-    <include file="$(find mbot_catching)/launch/exp_recorder.launch">
-        <arg name="frequency" value="$(arg hf_frequency)" />
+    <include file="$(find mbot_catching)/launch/gui_recorder.launch">
+        <arg name="frequency" value="$(arg frequency)" />
     </include>
 </launch>

@@ -1,4 +1,4 @@
-#! /home/wenchang/miniconda3/envs/oracle/bin/python
+#! /home/aabl-lab/miniconda3/envs/qd/bin/python
 import tkinter as tk
 from PIL import Image, ImageTk
 import os
@@ -7,7 +7,8 @@ import rosbag
 from threading import Thread
 from mbot_catching.msg import HF, EnvObs, EnvStat
 import re
-
+import beepy
+import time
 
 class GUIRecorder:
     def __init__(self):
@@ -22,14 +23,12 @@ class GUIRecorder:
             'f': 1,
             'g': 2
         }
-        
+        self.beepy_thread = Thread(target=self.play_beep_sound)    
         self.rosbag_init()
         # Start recording data with rosbag in a separate thread
         self.recording_thread = Thread(target=self.rosbag_record)
         self.recording_thread.start()
-        
-        # self.gui_root = self.init_gui()
-        # self.gui_root.mainloop()
+    
         self.gui_thread = Thread(target=self.init_gui)
         self.gui_thread.start()
         # Start feedback inquiry section
@@ -70,15 +69,14 @@ class GUIRecorder:
         while not is_start and not rospy.is_shutdown():
             rospy.sleep(0.01)  
             is_start = rospy.get_param('/is_start')
-        rospy.sleep(1)
 
     def rosbag_record(self):
         """Start rosbag recording"""
         rospy.loginfo("Rosbag recording starts!")
         topics = [
             ('/exp/HF', HF),
-            # ('/exp/EnvObs', EnvObs),
-            # ('/exp/EnvStat', EnvStat)
+            ('/exp/EnvObs', EnvObs),
+            ('/exp/EnvStat', EnvStat)
         ]
         for topic_name, msg_type in topics:
             rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
@@ -93,6 +91,7 @@ class GUIRecorder:
         """Handles clean shutdown of the node and saves the rosbag."""
         rospy.loginfo("Shutting down node, closing rosbag...")
         self.recording_thread.join()
+        self.beepy_thread.join()
         self.bag.close()
         rospy.set_param('is_start', False)
         rospy.loginfo("Rosbag successfully saved. Exp completed!")
@@ -118,6 +117,14 @@ class GUIRecorder:
                 self.is_hf = True
         except AttributeError:
             pass
+
+    def play_beep_sound(self):
+            while True:
+                start= time.time()
+                beepy.beep(sound=1)
+                duration = time.time() - start
+                time.sleep(self.freq - duration)
+
     # initialize gui windows
     def init_gui(self):
         root = tk.Tk()
@@ -150,18 +157,18 @@ class GUIRecorder:
         self.seq = 0
         self.start_time = rospy.Time.now()
         self.is_hf = False
-        rospy.loginfo("Feel free to type emoji tagged keys as your feedback!")
+        self.beepy_thread.start()
         while not rospy.is_shutdown():
             elapsed_time = (rospy.Time.now() - self.start_time).to_sec()
             if elapsed_time - self.freq > 1e-3:
                 if self.is_hf:
-                    self.publish_feedback(self.seq, self.hf_value, self.delay)
+                    pass
+                    # self.publish_feedback(self.seq, self.hf_value, self.delay)
                 else:
                     self.publish_feedback(self.seq, float('nan'), float('nan'))
                 self.seq += 1
                 self.start_time = rospy.Time.now()
                 self.is_hf = False
-                rospy.loginfo("Feel free to type emoji tagged keys as your feedback!")
 
 if __name__ == "__main__":
     start_record = GUIRecorder()

@@ -2,12 +2,14 @@ import numpy as np
 
 SAFE_ZONE_MIN = 0.2
 SAFE_ZONE_MAX = 0.6
+SAFE_Z = 0.2
+Z_MAX = 0.6
+Z_MIN = 0.03
 
 class ExperimentAgent:
     def __init__(self, 
                  env,
-                 noise_eps=0.1,):
-        noise_eps = 0
+                 noise_eps=0.2,):
         self.env = env
         self.action_space = env.action_space
         # self.observation_space = env.observation_space
@@ -29,15 +31,12 @@ class ExperimentAgent:
         # get action, action is optimal + noise
         do_random = np.random.uniform(0, 1) < self.epsilon
         if do_random:
-            random_key = np.random.choice(list(self.discrete_actions.keys()))
-            action = self.discrete_actions[random_key]
-            # action_scale = np.random.uniform(0, self.max_action_scale)
-            # action = action*(action_scale)
+            action = self.get_random_action(state)
         else:
             action = self.get_optimal_action(state)
-            # generate random scale
-            action_scale = np.random.uniform(0, self.max_action_scale)
-            action = action*(action_scale)
+            if action is None:
+                action = self.head_to_safe_zone(state)
+
         return action
 
     def get_optimal_action(self, state):
@@ -56,27 +55,43 @@ class ExperimentAgent:
         # check if the action is safe
         for k in optimal_actions:
             if self.check_safe(state_after_action[k]):
-                return self.discrete_actions[k] 
+                return self.discrete_actions[k] * sc
+        return None
         # optimal_action = min(simulated_delta, key=lambda k: simulated_delta[k].mean())
         # print(f"optimal action: {optimal_action}")
         # return self.discrete_actions[optimal_action]
     
+    def head_to_safe_zone(self, state):
+        action = self.check_safest_action(state)
+        return action
+
+    def check_safest_action(self, state):
+        eef_pos = state[:6]
+        sc = np.random.uniform(0, self.max_action_scale)
+        safe_zone_middle =  (SAFE_ZONE_MIN + SAFE_ZONE_MAX) / 2
+        state_after_action = {k: eef_pos + v[:6]*sc for k, v in self.discrete_actions.items()}
+        dist_to_base_after_action = {k: np.sqrt(v[0]**2+v[1]**2) for k, v in state_after_action.items()}
+        safe_actions = sorted(dist_to_base_after_action, key=lambda k: np.abs(safe_zone_middle - dist_to_base_after_action[k]) + np.abs((state_after_action[k][2] - SAFE_Z)))
+        return self.discrete_actions[safe_actions[0]]
+
     def get_random_action(self, state):
         # get random action, need to make sure the action is safe
         random_key = np.random.choice(list(self.discrete_actions.keys()))
         action = self.discrete_actions[random_key]
-        action_scale = np.random.uniform(0, self.max_action_scale)
-        action = action*(action_scale)
-        state_after_action = state + action
+        sc = np.random.uniform(0, self.max_action_scale)
+        action = action*sc
+        eef_pos = state[:6]
+        state_after_action = eef_pos + action[:6]
         while not self.check_safe(state_after_action):
             random_key = np.random.choice(list(self.discrete_actions.keys()))
             action = self.discrete_actions[random_key]
             action_scale = np.random.uniform(0, self.max_action_scale)
             action = action*(action_scale)
-            state_after_action = state + action
+            state_after_action = eef_pos + action[:6]
         return action 
     def check_safe(self, state):
         eef_xy = state[:2]
         eef_distance = np.linalg.norm(eef_xy, ord=2)
         print(f"eef_distance: {eef_distance}")
-        return (SAFE_ZONE_MIN < eef_distance < SAFE_ZONE_MAX)
+        eef_z = state[2]
+        return (SAFE_ZONE_MIN < eef_distance < SAFE_ZONE_MAX) and (Z_MIN < eef_z < Z_MAX)
