@@ -1,4 +1,4 @@
-#!/home/aabl-lab/miniconda3/envs/qd/bin/python
+#! /home/wenchang/miniconda3/envs/oracle/bin/python
 from . import agent
 from . import arm_control
 from . import mbot_control
