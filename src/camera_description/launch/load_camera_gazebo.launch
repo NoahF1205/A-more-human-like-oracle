@@ -1,9 +1,19 @@
-<launch>\
+<launch>
+    <arg name="camera_name" default="usb_camera" />
+    <!-- camera top -->
     <arg name="cam_x1" default="0"/>
     <arg name="cam_y1" default="0"/>
     <arg name="cam_z1" default="2"/>
-    <arg name="camera_package_name" default="camera" />
-    <arg name="camera_name" default="usb_camera" />
+    <arg name="cam_row1" default="0"/>
+    <arg name="cam_pitch1" default="1.57"/>
+    <arg name="cam_yaw1" default="0"/>
+    <!-- camera side -->
+    <arg name="cam_x2" default="1"/>
+    <arg name="cam_y2" default="1"/>
+    <arg name="cam_z2" default="1"/>
+    <arg name="cam_row2" default="0"/>
+    <arg name="cam_pitch2" default="0.61"/>
+    <arg name="cam_yaw2" default="3.925"/>
 
     <!-- <include file="$(find kortex_gazebo)/launch/spawn_kortex_robot.launch">
         <arg name = "arm" value = "gen3"/>
@@ -11,18 +21,22 @@
     </include> -->
     <!-- Load the URDF into the ROS Parameter Server -->
     <!-- Run Gazebo and load the robot world -->
-    <param name="$(arg camera_package_name)_description" command="$(find xacro)/xacro --inorder '$(find camera_description)/urdf/camera_gazebo.xacro' camera_offset_x:=$(arg cam_x1), camera_offset_y:=$(arg cam_y1), camera_offset_z:=$(arg cam_z1)" />
+    <group ns="camera_top">
+        <param name="camera_description" command="$(find xacro)/xacro --inorder '$(find camera_description)/urdf/camera_gazebo.xacro' camera_offset_x:=$(arg cam_x1), camera_offset_y:=$(arg cam_y1), camera_offset_z:=$(arg cam_z1)
+        row:=$(arg cam_row1) pitch:=$(arg cam_pitch1) yaw:=$(arg cam_yaw1)"/>
+        <node name="camera_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+        args="-urdf -model camera_top -param camera_description -robot_namespace camera_top"/> 
+    </group>
 
-    <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="paused" value="false"/>
-        <arg name="use_sim_time" value="true"/>
-        <arg name="gui" value="true"/>
-        <arg name="headless" value="false"/>
-        <arg name="debug" value="false"/>
-    </include> -->
+    <group ns="camera_side">
+        <param name="camera_description" command="$(find xacro)/xacro --inorder '$(find camera_description)/urdf/camera_gazebo.xacro' camera_offset_x:=$(arg cam_x2), camera_offset_y:=$(arg cam_y2), camera_offset_z:=$(arg cam_z2)
+        row:=$(arg cam_row2) pitch:=$(arg cam_pitch2) yaw:=$(arg cam_yaw2)" />
+        <node name="camera_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+        args="-urdf -model camera_side -param camera_description -robot_namespace camera_side"/> 
+    </group>
+
+
 
     <!-- Spawn your camera in Gazebo -->
-    <node name="$(arg camera_package_name)_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
-        args="-urdf -model $(arg camera_package_name) -param $(arg camera_package_name)_description -robot_namespace $(arg camera_package_name)"/> 
-    <!-- </group> -->
+
 </launch>

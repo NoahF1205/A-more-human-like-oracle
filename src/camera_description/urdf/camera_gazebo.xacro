@@ -6,6 +6,10 @@
         <xacro:arg name="camera_offset_x" default="0"/>
         <xacro:arg name="camera_offset_y" default="0"/>
         <xacro:arg name="camera_offset_z" default="2"/>
+        <xacro:arg name="row" default="0"/>
+        <xacro:arg name="pitch" default="1.57"/>
+        <xacro:arg name="yaw" default="0"/>
+
         <!-- Create laser reference frame -->
 
         <link name="world"/>
@@ -38,7 +42,7 @@
         </link>
      
        <joint name="cam_joint" type="fixed">
-            <origin xyz="$(arg camera_offset_x) $(arg camera_offset_y) $(arg camera_offset_z)" rpy="0 1.57 0"/>
+            <origin xyz="$(arg camera_offset_x) $(arg camera_offset_y) $(arg camera_offset_z)" rpy="$(arg row) $(arg pitch) $(arg yaw)"/>
             <parent link="world"/>
             <child link="${prefix}_link"/>
             
