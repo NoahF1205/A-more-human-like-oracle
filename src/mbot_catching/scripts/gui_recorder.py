@@ -13,7 +13,7 @@ import time
 class GUIRecorder:
     def __init__(self):
         rospy.init_node('gui_recorder')
-        self.freq = rospy.get_param('~frequency', default=1.5)  # get frequency from ros parameter 
+        # self.freq = rospy.get_param('~frequency', default=1.5)  # get frequency from ros parameter 
 
         self.pub = rospy.Publisher('/exp/HF', HF, queue_size=10)
         self.key_to_hf = {
@@ -23,7 +23,7 @@ class GUIRecorder:
             'f': 1,
             'g': 2
         }
-        self.beepy_thread = Thread(target=self.play_beep_sound)    
+        # self.beepy_thread = Thread(target=self.play_beep_sound)    
         self.rosbag_init()
         # Start recording data with rosbag in a separate thread
         self.recording_thread = Thread(target=self.rosbag_record)
@@ -31,11 +31,12 @@ class GUIRecorder:
     
         self.gui_thread = Thread(target=self.init_gui)
         self.gui_thread.start()
-        # Start feedback inquiry section
-        self.run_experiment()
-
         # Register shutdown hook to handle clean exits
         rospy.on_shutdown(self.rosbag_save)
+        # Start feedback inquiry section
+        self.run_experiment()
+        
+
 
     def rosbag_init(self):
         """Set rosbag saving dir and filename and check if exp starts"""
@@ -89,10 +90,17 @@ class GUIRecorder:
 
     def rosbag_save(self):
         """Handles clean shutdown of the node and saves the rosbag."""
-        rospy.loginfo("Shutting down node, closing rosbag...")
-        self.recording_thread.join()
-        self.beepy_thread.join()
+        # TODO: WHY IS THIS HAPPENING???
+        # loginfo block the code from running!
+        self.recording_thread.join(timeout=0.5)
         self.bag.close()
+        rospy.loginfo("trying to shutdown!")
+        rospy.sleep(0.5)
+        rospy.loginfo("gui recorder: Shutting down node, closing rosbag...")
+        
+        # self.recording_thread.join(timeout=0.5)
+        self.gui_thread.join(timeout=0.5)
+        # self.bag.close()
         rospy.set_param('is_start', False)
         rospy.loginfo("Rosbag successfully saved. Exp completed!")
 
@@ -109,7 +117,7 @@ class GUIRecorder:
 
     def on_click(self, button_num):
         try:
-            if self.is_hf == False:
+            if self.is_hf == False and rospy.get_param("/start_recording"):
                 hf_value = button_num - 3
                 self.hf_value = hf_value
                 self.delay = (rospy.Time.now() - self.start_time).to_sec()
@@ -118,12 +126,12 @@ class GUIRecorder:
         except AttributeError:
             pass
 
-    def play_beep_sound(self):
-            while True:
-                start= time.time()
-                beepy.beep(sound=1)
-                duration = time.time() - start
-                time.sleep(self.freq - duration)
+    # def play_beep_sound(self):
+    #         while True:
+    #             start= time.time()
+    #             beepy.beep(sound=1)
+    #             duration = time.time() - start
+    #             time.sleep(self.freq - duration)
 
     # initialize gui windows
     def init_gui(self):
@@ -149,27 +157,47 @@ class GUIRecorder:
 
         for button in buttons:
             button.pack(side=tk.LEFT, padx=10, pady=20)
-
-        root.mainloop()
+        self.root = root
+        self.root.mainloop()
     def run_experiment(self):
         """HF inquiry procedure"""
         rospy.loginfo("Exp started, HF inquiry procedure will commence.")
         self.seq = 0
         self.start_time = rospy.Time.now()
         self.is_hf = False
-        self.beepy_thread.start()
+        # self.beepy_thread.start()
+        # while not rospy.is_shutdown():
+        #     elapsed_time = (rospy.Time.now() - self.start_time).to_sec()
+        #     if elapsed_time - self.freq > 1e-3:
+        #         if self.is_hf:
+        #             pass
+        #             self.publish_feedback(self.seq, self.hf_value, self.delay)
+        #         else:
+        #             self.publish_feedback(self.seq, float('nan'), float('nan'))
+        #         self.seq += 1
+        #         self.start_time = rospy.Time.now()
+        #         self.is_hf = False
+        # if rospy.get_param('/is_start_beep') == "True":
+        #     while True:
+        #         if rospy.get_param('/is_start_beep')  == "True":
+        #             self.start_time = rospy.Time.now()
+        #             while rospy.get_param('/is_end_beep') != "True":
+        #                 continue
+        #             rospy.logerr("done")
+        #             if not self.is_hf:
+        #                 self.publish_feedback(self.seq, float('nan'), float('nan'))
+        #             self.seq += 1
+        #             self.is_hf = False
+        recording_flag = True
         while not rospy.is_shutdown():
-            elapsed_time = (rospy.Time.now() - self.start_time).to_sec()
-            if elapsed_time - self.freq > 1e-3:
-                if self.is_hf:
-                    pass
-                    # self.publish_feedback(self.seq, self.hf_value, self.delay)
-                else:
-                    self.publish_feedback(self.seq, float('nan'), float('nan'))
-                self.seq += 1
-                self.start_time = rospy.Time.now()
+            if rospy.get_param("/start_recording") and recording_flag == False:
                 self.is_hf = False
-
+                recording_flag = True
+                self.start_time = rospy.Time.now()
+            if (not rospy.get_param("/start_recording")) and recording_flag == True:
+                recording_flag = False
+                if not self.is_hf:
+                    self.publish_feedback(self.seq, float('nan'), float('nan'))
 if __name__ == "__main__":
     start_record = GUIRecorder()
 

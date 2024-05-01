@@ -1,13 +1,13 @@
 <launch>
     <!-- Start Experiment Recorder-->
-    <arg name="frequency" default="1.5" />
-    <group if="$(eval arg('frequency') in [1.5, 3, 4.5, 6])">
-        <node name="gui_recorder" pkg="mbot_catching" type="gui_recorder.py" output="screen">
-            <param name="frequency" value="$(arg frequency)"/>
-        </node>
-    </group>
+    <!-- <arg name="frequency" default="1.5" /> -->
+    <!-- <group if="$(eval arg('frequency') in [1.5, 3, 4.5, 6])"> -->
+    <node name="gui_recorder" pkg="mbot_catching" type="gui_recorder.py" output="screen">
+        <!-- <param name="frequency" value="$(arg frequency)"/> -->
+    </node>
+    <!-- </group> -->
 
-    <group unless="$(eval arg('frequency') in [1.5, 3, 4.5, 6])">
+    <!-- <group unless="$(eval arg('frequency') in [1.5, 3, 4.5, 6])">
         <node name="param_error" pkg="mbot_catching" type="exit_with_error.py" args="$(arg frequency)" required="true"/>
-    </group>
+    </group> -->
 </launch>

@@ -73,11 +73,11 @@ class ExperimentRecorder:
         
         # check ros parameter: is_start，if exp is not started yet, block
         rospy.loginfo("Waiting for the exp to start...")
-        is_start = rospy.get_param('/is_start')
-        while not is_start and not rospy.is_shutdown():
-            rospy.sleep(0.01)  
-            is_start = rospy.get_param('/is_start')
-        rospy.sleep(1)
+        # is_start = rospy.get_param('/is_start')
+        # while not is_start and not rospy.is_shutdown():
+        #     rospy.sleep(0.01)  
+        #     is_start = rospy.get_param('/is_start')
+        # rospy.sleep(1)
 
     def rosbag_record(self):
         """Start rosbag recording"""

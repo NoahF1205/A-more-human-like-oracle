@@ -1,7 +1,9 @@
 <launch>
-    <arg name="frequency" default="0" />
+    <param name="/start_recording" type="bool" value="false" />
+    <!-- <arg name="frequency" default="0" /> -->
     <include file="$(find mbot_catching)/launch/exp.launch" />
     <include file="$(find mbot_catching)/launch/gui_recorder.launch">
-        <arg name="frequency" value="$(arg frequency)" />
+    
+        <!-- <arg name="frequency" value="$(arg frequency)" /> -->
     </include>
 </launch>

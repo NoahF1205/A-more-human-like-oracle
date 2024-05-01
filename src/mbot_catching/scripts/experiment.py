@@ -5,6 +5,8 @@ from std_msgs.msg import String
 from sim_setting.experiment_env import MbotCatchingEnv
 from sim_setting.agent import ExperimentAgent
 from mbot_catching.msg import EnvObs, EnvStat
+import beepy
+import time
 
 def run_experiment():
     # # init ros node
@@ -23,8 +25,9 @@ def run_experiment():
     rospy.sleep(1)
     done = False
     seq = 0
-    while not done:
-        # todo: 1.Need to considerate the timing of publish the data
+    while not done and not rospy.is_shutdown():
+        rospy.set_param("/start_recording", False)
+        beepy.beep(sound=4)
         obs = EnvObs()
         obs.header.stamp = rospy.Time.now()
         obs.header.seq = seq
@@ -52,7 +55,9 @@ def run_experiment():
         stat_pub.publish(stat)
 
         seq += 1
-        rospy.sleep(1)
+        beepy.beep(sound=1)
+        rospy.set_param("/start_recording", True)
+        rospy.sleep(2)
 
 if __name__ == '__main__':
     run_experiment()

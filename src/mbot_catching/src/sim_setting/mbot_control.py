@@ -6,6 +6,7 @@ from gazebo_msgs.srv import SetModelState
 from gazebo_msgs.msg import ModelState
 from gazebo_msgs.srv import GetModelState
 import tf
+import random
 
 #http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API#Set_and_Get_Model_Pose_and_Twist_in_Simulation_via_Service
 class MbotSim:
@@ -119,17 +120,30 @@ class MbotSim:
         self.velocity_publisher.publish(vel_msg)
         return True
     
+    # def random_move(self):
+    #     rospy.loginfo("called random move!")
+    #     done = False
+    #     while not done:
+    #         direction = np.random.randint(0, 7)
+    #         speed = np.random.uniform(0,self.max_speed)
+    #         duration = 1
+    #         done = self.move_mbot(direction, 
+    #                               speed,
+    #                               duration)
     def random_move(self):
-        rospy.loginfo("called random move!")
+        """Mbot_trajectory design:
+            Randomly move in 8 directions for random time
+        """
+        rospy.loginfo("random moving!")
+        durations = [0.1, 0.3, 0.5, 1.0]
+        velocities = [0.1/2, 0.3/2, 0.5/2]
+        directions = np.arange(8)
         done = False
         while not done:
-            direction = np.random.randint(0, 7)
-            speed = np.random.uniform(0,self.max_speed)
-            duration = 1
-            done = self.move_mbot(direction, 
-                                  speed,
-                                  duration)
-        
+            v = random.choice(velocities)
+            di = random.choice(directions)
+            du = random.choice(durations)    
+            done = self.move_mbot(di, v, du)
 
     def is_within_bounds(self, x, y):
         """Check if the position is within the safe bounds"""
