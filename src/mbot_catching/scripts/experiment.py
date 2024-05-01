@@ -55,8 +55,8 @@ def run_experiment():
         stat_pub.publish(stat)
 
         seq += 1
-        beepy.beep(sound=1)
         rospy.set_param("/start_recording", True)
+        beepy.beep(sound=1)
         rospy.sleep(2)
 
 if __name__ == '__main__':
