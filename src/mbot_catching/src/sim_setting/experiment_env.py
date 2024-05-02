@@ -8,9 +8,12 @@ from .mbot_control import MbotSim
 import gymnasium.spaces as spaces
 import threading
 
+TARGET_Z = 0.05
+SUCCESS_THRESHOULD = 0.05
 
 home_pose = [0.576103925704956, 0.0021510878577828407, 0.43399396538734436, 1.5707133693269406, -0.0009434863237384807, 1.5723171249353864, 0]
-action_home= [0.2, 0.4, 0.3, 1.5799180530025816 + np.pi/2 , -0.01589837991006801, 2.61771051765151 , 0]
+action_home= [0.2, 0.4, 0.3, 1.5799180530025816 + np.pi/2 , 0, 2.61771051765151 , 0]
+#-0.01589837991006801
 
 class MbotCatchingEnv:
     def __init__(self):
@@ -25,7 +28,8 @@ class MbotCatchingEnv:
         self.done = False
         self.mbot_initialized = threading.Event()
         self.arm_initialized = threading.Event()
-        
+        self.mbot_enable_move = True
+        self.target_z = 0.05
 
 
         # Register shutdown hook to reset mbot_catching_world
@@ -77,6 +81,7 @@ class MbotCatchingEnv:
         return self.state
     
     def step(self, action):
+        eef_action = action[-1]
         # TODO: step need to be blocked until the action is finished
         current_state = self.arm_sim.get_cartisian_state()
         current_state.append(0)
@@ -86,12 +91,15 @@ class MbotCatchingEnv:
         # print("action: ", action)
         action = current_state + action
         # self.do_random_move()
-        self.mbot_sim.random_move()
+        if self.mbot_enable_move:
+            self.mbot_sim.random_move()
         _, _, self.done, _ = self.arm_sim.step(action)
+        self.arm_sim.arm.send_gripper_command(eef_action)
         
         self.state = self.get_state()
+        done = self.check_done(self.state, action)
         reward = self.calculate_reward()
-        return self.state, reward, self.done, None
+        return self.state, reward, done, None
 
 
     def get_state(self):
@@ -126,6 +134,13 @@ class MbotCatchingEnv:
         mbot_position = np.array([mbot_state.pose.position.x, mbot_state.pose.position.y])
         return np.linalg.norm(mbot_position) < 0.5
     
+    def check_done(self, state, action):
+        eef_xyz = state[:3]
+        mbot_xy = state[-2:]
+        target = np.concatenate([mbot_xy, [TARGET_Z]])
+        dist = np.sum(np.square(eef_xyz - target))
+        dist = np.sqrt(dist)
+        return dist <= SUCCESS_THRESHOULD and action[-1] == 1
     # def mbot_random_move(self):
     #     while not self.stop_thread.is_set():
     #             customized_mbot_trajectory(self.mbot_sim)
@@ -151,6 +166,10 @@ class MbotCatchingEnv:
     
     def safe_exits(self):
         self.reset()  
+    
+    def disable_mbot_moving(self):
+        self.mbot_enable_move = False
+        
 
 if __name__ == "__main__":
     # test the environment

@@ -1,5 +1,6 @@
 #! /home/aabl-lab/miniconda3/envs/qd/bin/python
 import tkinter as tk
+from tkinter import messagebox
 from PIL import Image, ImageTk
 import os
 import rospy
@@ -10,6 +11,7 @@ import re
 import threading
 import beepy
 import time
+import sys
 
 class GUIRecorder:
     def __init__(self):
@@ -24,89 +26,18 @@ class GUIRecorder:
             'f': 1,
             'g': 2
         }
-        # self.beepy_thread = Thread(target=self.play_beep_sound)    
-        # self.rosbag_init()
-        # Start recording data with rosbag in a separate thread
-        # self.recording_thread = Thread(target=self.rosbag_record)
-        # self.recording_thread.start()
         is_start = rospy.get_param('/is_start')
         while not is_start and not rospy.is_shutdown():
             rospy.sleep(0.01)  
             is_start = rospy.get_param('/is_start')
-
         self.gui_start_event = threading.Event()
         self.gui_start_event.clear()
         self.gui_thread = Thread(target=self.init_gui)
         self.gui_thread.start()
         self.gui_start_event.wait()
-        # Register shutdown hook to handle clean exits
-        # rospy.on_shutdown(self.rosbag_save)
-        # Start feedback inquiry section
         self.run_experiment()
+        rospy.on_shutdown()
         
-
-
-    def rosbag_init(self):
-        """Set rosbag saving dir and filename and check if exp starts"""
-        # get the number 'n' of data/exp_n
-        def get_max_exp_number(directory, prefix):
-                dirs = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d)) and d.startswith(prefix)]
-                max_number = 0
-                for dir in dirs:
-                    match = re.match(f'{prefix}(\d+)', dir)
-                    if match:
-                        number = int(match.group(1))
-                        if number > max_number:
-                            max_number = number
-                
-                return max_number
-        project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        data_dir = os.path.join(project_path, "data")
-        exp_prefix = 'exp_'
-        if not os.path.exists(data_dir):
-            os.makedirs(data_dir)
-        max_exp_number = get_max_exp_number()        # self.recording_thread = Thread(target=self.rosbag_record)
-        # self.recording_thread.start()
-        # check ros parameter: is_start，if exp is not started yet, block
-        rospy.loginfo("Waiting for the exp to start...")
-        is_start = rospy.get_param('/is_start')
-        while not is_start and not rospy.is_shutdown():
-            rospy.sleep(0.01)  
-            is_start = rospy.get_param('/is_start')
-
-    def rosbag_record(self):
-        """Start rosbag recording"""
-        rospy.loginfo("Rosbag recording starts!")
-        topics = [
-            ('/exp/HF', HF),
-            ('/exp/EnvObs', EnvObs),
-            ('/exp/EnvStat', EnvStat)
-        ]
-        for topic_name, msg_type in topics:
-            rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
-        
-        rospy.spin()
-
-    def callback(self, msg, topic_name):
-        """Callback function for rosbag recording"""
-        self.bag.write(topic_name, msg)
-
-    def rosbag_save(self):
-        """Handles clean shutdown of the node and saves the rosbag."""
-        # TODO: WHY IS THIS HAPPENING???
-        # loginfo block the code from running!
-        self.recording_thread.join(timeout=0.5)
-        self.bag.close()
-        rospy.loginfo("trying to shutdown!")
-        rospy.sleep(0.5)
-        rospy.loginfo("gui recorder: Shutting down node, closing rosbag...")
-        
-        # self.recording_thread.join(timeout=0.5)
-        self.gui_thread.join(timeout=0.5)
-        # self.bag.close()
-        rospy.set_param('is_start', False)
-        rospy.loginfo("Rosbag successfully saved. Exp completed!")
-
     def publish_feedback(self, seq, hf_value, delay):
         """Publish HF"""
         feedback = HF()
@@ -120,27 +51,38 @@ class GUIRecorder:
 
     def on_click(self, button_num):
         for button in self.buttons:
-                    button.config(bg="red")
+                    button.config(bg="yellow")
         try:
             if self.is_hf == False and rospy.get_param("/start_recording"):
                 hf_value = button_num - 3
                 self.hf_value = hf_value
                 self.delay = (rospy.Time.now() - self.start_time).to_sec()
                 self.publish_feedback(self.seq, hf_value, (rospy.Time.now() - self.start_time).to_sec())
+                self.seq += 1
                 self.is_hf = True
         except AttributeError:
             pass
 
-    # def play_beep_sound(self):
-    #         while True:
-    #             start= time.time()
-    #             beepy.beep(sound=1)
-    #             duration = time.time() - start
-    #             time.sleep(self.freq - duration)
+    def resize_image(self, image, maxsize):
+        r1 = image.size[0]/ maxsize[0]
+        r2 = image.size[1] / maxsize[1]
+        ratio = max(r1, r2)
+        newsize = (int(image.size[0]/ratio), int(image.size[0]/ratio))
+        image = image.resize(newsize, Image.Resampling.LANCZOS)
+        return image
+
+    def check_if_exp_finished(self):
+        if rospy.get_param("/is_ended"):
+            messagebox.showinfo("exp status", "Exp ended! Mission complete!")
+            time.sleep(1)
+            self.root.destroy()
+        else:
+            self.root.after(100, self.check_if_exp_finished)
 
     # initialize gui windows
     def init_gui(self):
         root = tk.Tk()
+        frame = tk.Frame(root)
         root.title("Recorder")
 
         root.geometry("1200x200")
@@ -150,23 +92,30 @@ class GUIRecorder:
         image_dir = os.path.join(this_file_path, "images")
         print(image_dir)
         image_paths = ["Weary.png", "Disappointed.png", "Neutral.png", "Smiling.png", "Grinning.png"]
-
+        button_labels = ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"]
         for i, image_path in enumerate(image_paths, start=1):
+            frame = tk.Frame(root)
+            frame.pack(side=tk.LEFT, padx=20, pady=20)
             image_path = os.path.join(image_dir, image_path)
             image = Image.open(image_path)
+            image = self.resize_image(image, [60,60])
             photo = ImageTk.PhotoImage(image)
-            button = tk.Button(root, image=photo, width=100, height=100, command=lambda i=i: self.on_click(i))
-            # button.config(bg="green")
+            button = tk.Button(frame, image=photo, width=100, height=100, command=lambda i=i: self.on_click(i))
             button.image = photo
+            button.pack()
+            label_widget = tk.Label(frame, text=button_labels[i-1], font=("Arial", 20))
+            label_widget.pack()
             buttons.append(button)
 
         self.buttons = buttons
-        for button in buttons:
-            button.pack(side=tk.LEFT, padx=10, pady=20)
+        # for button in buttons:
+        #     button.pack(side=tk.LEFT, padx=10, pady=20)
         # self.buttons = buttons
         self.root = root
         self.gui_start_event.set()
+        self.root.after(100, self.check_if_exp_finished)
         self.root.mainloop()
+
     def run_experiment(self):
         """HF inquiry procedure"""
         rospy.loginfo("Exp started, HF inquiry procedure will commence.")
@@ -174,30 +123,7 @@ class GUIRecorder:
         self.start_time = rospy.Time.now()
         self.is_hf = False
         for button in self.buttons:
-            button.config(background="red")
-        # self.beepy_thread.start()
-        # while not rospy.is_shutdown():
-        #     elapsed_time = (rospy.Time.now() - self.start_time).to_sec()
-        #     if elapsed_time - self.freq > 1e-3:
-        #         if self.is_hf:
-        #             pass
-        #             self.publish_feedback(self.seq, self.hf_value, self.delay)
-        #         else:
-        #             self.publish_feedback(self.seq, float('nan'), float('nan'))
-        #         self.seq += 1
-        #         self.start_time = rospy.Time.now()
-        #         self.is_hf = False
-        # if rospy.get_param('/is_start_beep') == "True":
-        #     while True:
-        #         if rospy.get_param('/is_start_beep')  == "True":
-        #             self.start_time = rospy.Time.now()
-        #             while rospy.get_param('/is_end_beep') != "True":
-        #                 continue
-        #             rospy.logerr("done")
-        #             if not self.is_hf:
-        #                 self.publish_feedback(self.seq, float('nan'), float('nan'))
-        #             self.seq += 1
-        #             self.is_hf = False
+            button.config(background="yellow")
         recording_flag = True
         while not rospy.is_shutdown():
             if rospy.get_param("/start_recording") and recording_flag == False:
@@ -205,13 +131,15 @@ class GUIRecorder:
                 recording_flag = True
                 self.start_time = rospy.Time.now()
                 for button in self.buttons:
-                    button.config(bg="green")
+                    button.config(bg="blue")
             if (not rospy.get_param("/start_recording")) and recording_flag == True:
                 recording_flag = False
                 for button in self.buttons:
-                    button.config(bg="red")
+                    button.config(bg="yellow")
                 if not self.is_hf:
                     self.publish_feedback(self.seq, float('nan'), float('nan'))
+                    self.seq += 1
+
 if __name__ == "__main__":
     start_record = GUIRecorder()
 

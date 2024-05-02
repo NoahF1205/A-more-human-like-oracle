@@ -1,19 +1,21 @@
 import numpy as np
-
+import rospy
 SAFE_ZONE_MIN = 0.2
 SAFE_ZONE_MAX = 0.6
 SAFE_Z = 0.2
 Z_MAX = 0.6
 Z_MIN = 0.03
+SUCCESS_THRESHOULD = 0.05
 
 class ExperimentAgent:
     def __init__(self, 
                  env,
-                 noise_eps=0.2,):
+                 noise_eps=0.5,):
         self.env = env
         self.action_space = env.action_space
         # self.observation_space = env.observation_space
         self.epsilon = noise_eps
+        self.start_epsilon = noise_eps
         self.mbot_height = 0.05
         self.discrete_actions = {"forward": np.array([1, 0, 0, 0, 0, 0, 0]),
                                  "backward": np.array([-1, 0, 0, 0, 0, 0, 0]),
@@ -27,7 +29,15 @@ class ExperimentAgent:
                                  "backward_right": np.array([-1, -1, 0, 0, 0, 0, 0]),
                                  "stop": np.array([0, 0, 0, 0, 0, 0, 0])}
         self.max_action_scale = 0.1
+        self.step = 0
+        self.min_epsilon = 0.1
+        self.decay_steps = 50
     def get_action(self, state):
+        if self.check_success(state):
+            action = self.discrete_actions["stop"]
+            eef_action = 1
+            action[-1] = eef_action
+            return action
         # get action, action is optimal + noise
         do_random = np.random.uniform(0, 1) < self.epsilon
         if do_random:
@@ -36,7 +46,8 @@ class ExperimentAgent:
             action = self.get_optimal_action(state)
             if action is None:
                 action = self.head_to_safe_zone(state)
-
+        if self.epsilon > 0:
+            self.noise_decay()
         return action
 
     def get_optimal_action(self, state):
@@ -74,6 +85,9 @@ class ExperimentAgent:
         safe_actions = sorted(dist_to_base_after_action, key=lambda k: np.abs(safe_zone_middle - dist_to_base_after_action[k]) + np.abs((state_after_action[k][2] - SAFE_Z)))
         return self.discrete_actions[safe_actions[0]]
 
+    def disable_random_move(self):
+        self.epsilon = 0
+    
     def get_random_action(self, state):
         # get random action, need to make sure the action is safe
         random_key = np.random.choice(list(self.discrete_actions.keys()))
@@ -95,3 +109,17 @@ class ExperimentAgent:
         print(f"eef_distance: {eef_distance}")
         eef_z = state[2]
         return (SAFE_ZONE_MIN < eef_distance < SAFE_ZONE_MAX) and (Z_MIN < eef_z < Z_MAX)
+    
+    def check_success(self,state:np.ndarray):
+        eef_xyz = state[:3]
+        mbot_xy = state[-2:]
+        target = np.concatenate([mbot_xy, [self.mbot_height]])
+        dist = np.sum(np.square(eef_xyz - target))
+        dist = np.sqrt(dist)
+        return dist <= SUCCESS_THRESHOULD
+    
+    def noise_decay(self):
+        decay_rate = (self.start_epsilon - self.min_epsilon) / self.decay_steps
+        self.epsilon = max(self.min_epsilon, self.epsilon-decay_rate)
+        rospy.loginfo(f"current epsilon: {self.epsilon}")
+        

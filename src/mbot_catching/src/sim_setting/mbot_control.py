@@ -33,7 +33,6 @@ class MbotSim:
         }
         self.max_speed = 0.1
         self.random_move_num = 20
-        self.random_move_num = 20
 
     def set_model_state(self, position, orientation):
         rospy.wait_for_service('/gazebo/set_model_state')
@@ -138,7 +137,7 @@ class MbotSim:
             Randomly move in 8 directions for random time
         """
         rospy.loginfo("random moving!")
-        durations = [0.3, 0.5, 1.0]
+        durations = [0.5, 0.5, 1.0]
         velocities = [0.2/2, 0.3/2, 0.5/2]
         directions = np.arange(8)
         move_num = 0
@@ -150,7 +149,7 @@ class MbotSim:
             du = random.choice(durations) 
             # du = np.random.uniform(0.5, 1.0)   
             done = self.move_mbot(di, v, du)
-            rospy.loginfo(f'random move: {v},{di},{du}')
+            # rospy.loginfo(f'random move: {v},{di},{du}')
             if done:
                 move_num += 1
 

@@ -3,8 +3,12 @@ import os
 import rospy
 import rosbag
 from mbot_catching.msg import HF, EnvObs, EnvStat
+from sensor_msgs.msg import Image
 import time
 import re
+from std_srvs.srv import Empty, EmptyResponse
+
+
 
 class RosbagRecorder:
     def __init__(self):
@@ -39,14 +43,13 @@ class RosbagRecorder:
         os.makedirs(new_exp_dir)
 
         self.bag = rosbag.Bag(os.path.join(new_exp_dir, f'{exp_prefix}{new_exp_number}.bag'), 'w')
-        
         # check ros parameter: is_start，if exp is not started yet, block
         rospy.loginfo("Waiting for the exp to start...")
         is_start = rospy.get_param('/is_start')
         while not is_start and not rospy.is_shutdown():
             rospy.sleep(0.01)  
             is_start = rospy.get_param('/is_start')
-
+        self.shutdown_service = rospy.Service('shutdown_rosbag', Empty, self.handle_shutdown_request)
     def rosbag_record(self):
         """Start rosbag recording"""
         rospy.loginfo("Rosbag recording starts!")
@@ -54,6 +57,8 @@ class RosbagRecorder:
             ('/exp/HF', HF),
             ('/exp/EnvObs', EnvObs),
             ('/exp/EnvStat', EnvStat)
+            # ('/camera_side/camera/image_raw/compressed', Image),
+            # ('/camera_top/camera/image_raw/compressed', Image)
         ]
         for topic_name, msg_type in topics:
             rospy.Subscriber(topic_name, msg_type, self.callback, callback_args=topic_name)
@@ -70,6 +75,10 @@ class RosbagRecorder:
         self.bag.close()
         rospy.set_param('is_start', False)
         rospy.loginfo("Rosbag successfully saved. Exp completed!")
+    
+    def handle_shutdown_request(self, req):
+        rospy.signal_shutdown('Rosbag shutdown requested.')
+        return EmptyResponse()
 
 if __name__ == "__main__":
     rosbag_recorder = RosbagRecorder()

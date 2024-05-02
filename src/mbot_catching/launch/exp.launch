@@ -1,5 +1,6 @@
 <launch>
     <!-- Run exp, publish is_start signal, for activate recording node -->
     <param name="is_start" value="true"/>
+    <param name="is_ended" value="false"/>
     <node name="experiment" pkg="mbot_catching" type="experiment.py" output="screen"/>
 </launch>
