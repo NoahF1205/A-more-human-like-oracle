@@ -4,6 +4,7 @@ import rospy
 import rosbag
 from mbot_catching.msg import HF, EnvObs, EnvStat
 import time
+import re
 
 class RosbagRecorder:
     def __init__(self):

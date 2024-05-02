@@ -65,7 +65,7 @@ class GUIRecorder:
         exp_prefix = 'exp_'
         if not os.path.exists(data_dir):
             os.makedirs(data_dir)
-        max_exp_number = get_max_exp        # self.recording_thread = Thread(target=self.rosbag_record)
+        max_exp_number = get_max_exp_number()        # self.recording_thread = Thread(target=self.rosbag_record)
         # self.recording_thread.start()
         # check ros parameter: is_start，if exp is not started yet, block
         rospy.loginfo("Waiting for the exp to start...")
