@@ -32,6 +32,8 @@ class MbotSim:
             7: (1, -np.pi * 2)       # Faster right
         }
         self.max_speed = 0.1
+        self.random_move_num = 20
+        self.random_move_num = 20
 
     def set_model_state(self, position, orientation):
         rospy.wait_for_service('/gazebo/set_model_state')
@@ -130,20 +132,27 @@ class MbotSim:
     #         done = self.move_mbot(direction, 
     #                               speed,
     #                               duration)
+        
     def random_move(self):
         """Mbot_trajectory design:
             Randomly move in 8 directions for random time
         """
         rospy.loginfo("random moving!")
-        durations = [0.1, 0.3, 0.5, 1.0]
-        velocities = [0.1/2, 0.3/2, 0.5/2]
+        durations = [0.3, 0.5, 1.0]
+        velocities = [0.2/2, 0.3/2, 0.5/2]
         directions = np.arange(8)
+        move_num = 0
         done = False
-        while not done:
+        while move_num < self.random_move_num:
             v = random.choice(velocities)
+            # v = 0.5
             di = random.choice(directions)
-            du = random.choice(durations)    
+            du = random.choice(durations) 
+            # du = np.random.uniform(0.5, 1.0)   
             done = self.move_mbot(di, v, du)
+            rospy.loginfo(f'random move: {v},{di},{du}')
+            if done:
+                move_num += 1
 
     def is_within_bounds(self, x, y):
         """Check if the position is within the safe bounds"""
