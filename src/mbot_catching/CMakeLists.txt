@@ -167,7 +167,7 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
   scripts/experiment.py
-  scripts/recorder_node.py
+  scripts/gui_recorder.py
   scripts/exit_with_error.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
