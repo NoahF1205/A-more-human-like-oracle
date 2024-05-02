@@ -57,7 +57,7 @@ def run_experiment():
         seq += 1
         rospy.set_param("/start_recording", True)
         beepy.beep(sound=1)
-        rospy.sleep(2)
+        rospy.sleep(7)
 
 if __name__ == '__main__':
     run_experiment()

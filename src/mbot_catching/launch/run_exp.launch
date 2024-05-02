@@ -1,9 +1,6 @@
 <launch>
     <param name="/start_recording" type="bool" value="false" />
-    <!-- <arg name="frequency" default="0" /> -->
     <include file="$(find mbot_catching)/launch/exp.launch" />
-    <include file="$(find mbot_catching)/launch/gui_recorder.launch">
-    
-        <!-- <arg name="frequency" value="$(arg frequency)" /> -->
-    </include>
+    <include file="$(find mbot_catching)/launch/gui.launch" />
+    <node name="rosbag_recorder" pkg="mbot_catching" type="rosbag_recorder.py" output="screen"/>
 </launch>
