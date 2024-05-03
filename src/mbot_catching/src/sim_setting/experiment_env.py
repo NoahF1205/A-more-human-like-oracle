@@ -93,6 +93,7 @@ class MbotCatchingEnv:
         # self.do_random_move()
         if self.mbot_enable_move:
             self.mbot_sim.random_move()
+            rospy.sleep(1)
         _, _, self.done, _ = self.arm_sim.step(action)
         self.arm_sim.arm.send_gripper_command(eef_action)
         
@@ -140,7 +141,8 @@ class MbotCatchingEnv:
         target = np.concatenate([mbot_xy, [TARGET_Z]])
         dist = np.sum(np.square(eef_xyz - target))
         dist = np.sqrt(dist)
-        return dist <= SUCCESS_THRESHOULD and action[-1] == 1
+        # return dist <= SUCCESS_THRESHOULD and action[-1] == 1
+        return action[-1] == 1
     # def mbot_random_move(self):
     #     while not self.stop_thread.is_set():
     #             customized_mbot_trajectory(self.mbot_sim)

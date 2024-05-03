@@ -7,7 +7,7 @@ from sim_setting.agent import ExperimentAgent
 from mbot_catching.msg import EnvObs, EnvStat
 import beepy
 import time
-
+from sim_setting.mbot_test import customized_mbot_trajectory
 from std_srvs.srv import Empty
 
 
@@ -32,9 +32,10 @@ def run_experiment():
     done = False
     seq = 0
     exp_start_time = rospy.Time.now().secs
+    # customized_mbot_trajectory(env.mbot_sim)
     while not done and not rospy.is_shutdown():
         rospy.set_param("/start_recording", False)
-        beepy.beep(sound=4)
+        # beepy.beep(sound=4)
         obs = EnvObs()
         obs.header.stamp = rospy.Time.now()
         obs.header.seq = seq
@@ -63,8 +64,9 @@ def run_experiment():
 
         seq += 1
         rospy.set_param("/start_recording", True)
-        beepy.beep(sound=1)
+        beepy.beep(sound=4)
         rospy.sleep(1)
+        beepy.beep(sound=1)
         curr_time = rospy.Time.now().secs
         if curr_time - exp_start_time >= EXP_DURATION_TIME:
             rospy.loginfo("reached exp duration time! Stopping mbot and disable random actions!")
