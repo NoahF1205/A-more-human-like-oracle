@@ -3,6 +3,7 @@ import rosbag
 import os
 from mbot_catching.msg import EnvObs, EnvStat, HF
 import json
+import pandas as pd
 # from mbot_catching.msg import HF
 
 def read_bag_in_folders(folder_path):
@@ -122,20 +123,27 @@ def save_data_in_json_file(data, bagfiles):
         with open(file_path, 'w') as f:
             json.dump(data[i], f,indent=4)
 
+
 if __name__ == "__main__":
-    path = "/home/wenchang/oracle/A-more-human-like-oracle/src/mbot_catching/data"
-    bag_files = read_bag_in_folders(path)
-    # print(bag_files)
-    results = read_data_in_bag_files(bag_files)
-    for i in range(len(results)):
-        print({k:len(obj) for k,obj in results[i].items()})
-    print([v['seq'] for v in results[-3]["obs"] if v != None])
-    # print([v for v in results[-3]["obs"] if v != None])
-    print([v for v in results[3]["stat"] if v == None])
-    # print(results[0])
-    aligned_data = align_data(results)
-    print([len(data) for data in aligned_data])
-    save_data_in_json_file(aligned_data, bag_files)
+    # path = "/home/wenchang/oracle/A-more-human-like-oracle/src/mbot_catching/data"
+    # bag_files = read_bag_in_folders(path)
+    # # print(bag_files)
+    # results = read_data_in_bag_files(bag_files)
+    # for i in range(len(results)):
+    #     print({k:len(obj) for k,obj in results[i].items()})
+    # print([v['seq'] for v in results[-3]["obs"] if v != None])
+    # # print([v for v in results[-3]["obs"] if v != None])
+    # print([v for v in results[3]["stat"] if v == None])
+    # # print(results[0])
+    # aligned_data = align_data(results)
+    # print([len(data) for data in aligned_data])
+    # save_data_in_json_file(aligned_data, bag_files)
+
+    csv_dir = "/home/wenchang/oracle/A-more-human-like-oracle/quatrics"
+    file_name = "qualtrics-text.csv"
+    file_path = os.path.join(csv_dir, file_name)
+    read_quatrics(file_path)
+
 
 
 
