@@ -1,5 +1,5 @@
 # A-more-human-like-oracle
-A simulated human feedback provider considering task difficulty and human capability
+A simulated human feedback provider considering human characteristics
 roslaunch mbot_catching mbot_catching_world.launch
 
 # Reference:
